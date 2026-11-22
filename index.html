@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pneumatik – Klausurvorbereitung MZE2/MFW2</title>
+<style>
+:root{--blue:#07528a;--blue2:#0c6ba8;--green:#62a927;--green-t:#4e8a1a;--ink:#183247;--muted:#5c7180;--paper:#fff;--bg:#eef3f6;--line:#d6e0e6;--soft:#e8f1f7;--warn:#fff6df;--bad:#b3261e;--badbg:#fdecea;--okbg:#eef7e6;--radius:16px;--logo:none}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:12px 14px 40px}
+h1{font-size:clamp(1.6rem,4vw,2.5rem);line-height:1.15;margin:.1em 0 .2em}
+h2{color:var(--blue);font-size:1.55rem;line-height:1.2;margin:.2em 0 .5em}
+h3{font-size:1.15rem;margin:1.1em 0 .4em;color:var(--ink)}
+p{margin:.4em 0 .7em}
+.head{display:flex;align-items:center;gap:14px;background:#fff;border-radius:var(--radius);padding:8px 14px;margin-bottom:10px}
+.head img{height:44px;width:auto;display:block}
+.head .meta{font-size:.9rem;color:var(--muted);line-height:1.3}
+.head .meta b{color:var(--ink)}
+.hero{background:linear-gradient(120deg,#064e83,#0873a8);color:#fff;border-radius:var(--radius);padding:16px 20px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:28px solid rgba(255,255,255,.08)}
+.hero p{margin:.2em 0;max-width:46em}
+.chip{display:inline-block;background:var(--green);color:#fff;font-weight:700;font-size:.85rem;border-radius:99px;padding:3px 12px;letter-spacing:.02em}
+.nav{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0 6px}
+.navrow{display:flex;gap:8px;align-items:center}
+.navrow select{flex:1;min-width:0;font:inherit;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;min-height:44px;padding:4px 10px}
+.bar{height:8px;background:var(--line);border-radius:9px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+.status{font-size:.82rem;color:var(--muted);margin-top:3px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.card{background:#fff;border-radius:var(--radius);padding:16px 18px;margin:12px 0;box-shadow:0 1px 2px rgba(24,50,71,.06)}
+.step{display:none}.step.on{display:block}
+.btn{font:inherit;font-weight:600;border:0;border-radius:9px;background:var(--blue);color:#fff;min-height:44px;min-width:44px;padding:8px 16px;cursor:pointer}
+.btn:hover{background:var(--blue2)}
+.btn.sec{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+.btn.ghost{background:var(--soft);color:var(--blue)}
+.btn:disabled{opacity:.45;cursor:default}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #f0a300;outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;flex:0 0 auto}
+.goal{display:flex;gap:12px;align-items:flex-start;margin:8px 0}
+.info{background:var(--soft);border-radius:12px;padding:10px 14px;margin:10px 0}
+.warnbox{background:var(--warn);border-radius:12px;padding:10px 14px;margin:10px 0}
+.formula{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:1.15rem;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 12px;display:inline-block;margin:3px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.sym{border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff}
+.sym svg{width:100%;height:auto;display:block;max-height:110px}
+label{display:block;font-weight:600;margin:6px 0 2px}
+.small{font-size:.88rem;color:var(--muted)}
+select,input[type=text],input[type=number],textarea{font:inherit;color:var(--ink);border:1px solid #9fb2bf;border-radius:9px;min-height:44px;padding:6px 10px;background:#fff;max-width:100%}
+select{width:100%}
+textarea{width:100%;min-height:110px;line-height:1.45}
+.inline{display:inline-block;width:auto}
+.fb{border-radius:10px;padding:8px 12px;margin:8px 0;display:none}
+.fb.show{display:block}
+.fb.ok{background:var(--okbg);border:1px solid #b9dc9a}
+.fb.no{background:var(--badbg);border:1px solid #f1b8b4}
+.fb.hint{background:var(--warn);border:1px solid #f0d899}
+.fb b.tag{display:inline-block;margin-right:6px}
+.task{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:12px 0}
+.task h3{margin-top:0;display:flex;gap:10px;align-items:center}
+.ans{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
+.ans input{width:150px}
+.unit{font-weight:600}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin:6px 0;cursor:pointer;min-height:44px;font-weight:400}
+.opt input{width:22px;height:22px;margin:2px 0 0;flex:0 0 auto}
+.plan{background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px}
+.plan svg{width:100%;height:auto;display:block}
+.two{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;align-items:start}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.sim{--press:#0c6ba8;--symon:#d9ecfa}
+.sim .pn-p{stroke-width:3}
+.simbtns{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.simstat{font-weight:600;min-height:3em}
+.order li{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:6px 8px;margin:6px 0;background:#fff}
+.order li span{flex:1}
+.order{list-style:none;padding:0;margin:0}
+.order .mv{min-width:44px;min-height:44px;padding:0;font-size:1.1rem}
+.layer{display:grid;grid-template-columns:150px 1fr 160px;gap:10px;align-items:center;border-top:1px solid var(--line);padding:10px 0}
+.layer:first-of-type{border-top:0}
+.layer .prev{border:1px dashed #9fb2bf;border-radius:10px;min-height:72px;display:flex;align-items:center;justify-content:center;background:#fafcfd}
+.layer .prev svg{width:100%;height:auto;max-height:80px}
+.layer .lname{font-weight:700;color:var(--blue)}
+@media (max-width:640px){.layer{grid-template-columns:1fr}.layer .prev{max-width:240px}}
+.check li{list-style:none;margin:4px 0}
+.check{padding:0}
+.check label{display:flex;gap:10px;font-weight:400;align-items:flex-start;min-height:40px}
+.check input{width:22px;height:22px;flex:0 0 auto;margin-top:2px}
+details{border:1px solid var(--line);border-radius:10px;padding:6px 12px;margin:8px 0;background:#fff}
+summary{cursor:pointer;font-weight:600;min-height:36px;display:flex;align-items:center}
+.score{font-size:2.2rem;font-weight:800;color:var(--blue)}
+.self td,.self th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+.self{border-collapse:collapse;width:100%}
+.self input{width:22px;height:22px}
+.footnav{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+.dlg{display:none;background:var(--warn);border-radius:12px;padding:12px 14px;margin:10px 0}
+.dlg.show{display:block}
+#printArea{display:none}
+.sr{position:absolute;left:-9999px}
+.tbl{border-collapse:collapse;margin:6px 0;font-size:.95rem}
+.tbl td,.tbl th{border:1px solid var(--line);padding:5px 9px;text-align:left}
+.tbl th{background:var(--soft)}
+@media (max-width:560px){.hero{padding:12px 16px}.hero p{display:none}.head img{height:36px}.head .meta{font-size:.82rem}.card{padding:14px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{
+  body{background:#fff;font-size:11pt}
+  .wrap>*:not(#printArea){display:none!important}
+  #printArea{display:block!important}
+  .card{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="head">
+  <img id="logo" alt="Logo BBS Meppen" src="data:image/jpeg;base64,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">
+  <div class="meta"><b>BBS Meppen · Berufsschule Metall</b><br><span id="cfgKlasse"></span> · Lerngebiet Steuerungstechnik · Pneumatik</div>
+</div>
+
+<div class="hero">
+  <span class="chip">Klausurvorbereitung</span>
+  <h1>Pneumatik – fit für die Klassenarbeit</h1>
+  <p>Bauteile erkennen und beschreiben, Schaltpläne lesen und erstellen, Kolbenkraft und Luftverbrauch berechnen.</p>
+</div>
+
+<div class="nav" role="navigation" aria-label="Schritte">
+  <div class="navrow">
+    <button class="btn ghost" id="prevBtn" aria-label="Vorheriger Schritt">◀</button>
+    <label for="stepSel" class="sr">Schritt wählen</label>
+    <select id="stepSel"></select>
+    <button class="btn ghost" id="nextBtn" aria-label="Nächster Schritt">▶</button>
+  </div>
+  <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
+  <div class="status"><span id="progTxt"></span><span id="saveTxt" aria-live="polite">Noch nicht gespeichert</span></div>
+</div>
+
+<!-- ============ 0 START ============ -->
+<section class="step" data-title="Start">
+  <div class="card">
+    <h2>Worum es geht</h2>
+    <div class="goal"><span class="num">1</span><div>Ihr erkennt pneumatische <b>Bauteile</b> im Schaltplan, benennt und kennzeichnet sie und beschreibt ihre Funktion.</div></div>
+    <div class="goal"><span class="num">2</span><div>Ihr <b>lest Schaltpläne</b> und beschreibt den Steuerungsablauf.</div></div>
+    <div class="goal"><span class="num">3</span><div>Ihr <b>erstellt einen Schaltplan</b> mit doppeltwirkendem Zylinder aus einer Aufgabenstellung.</div></div>
+    <div class="goal"><span class="num">4</span><div>Ihr <b>berechnet Kolbenkräfte und den Luftverbrauch</b>. Das Tabellenbuch Metall dürft ihr benutzen.</div></div>
+    <p class="small">Zeitbedarf: <span id="cfgZeit"></span>. Ihr könnt die Schritte in beliebiger Reihenfolge bearbeiten. Tipps gibt es gestuft, die Lösung erst nach eigenem Versuch. Der Kompetenzcheck am Ende funktioniert wie eine kleine Probearbeit: Auswertung erst zum Schluss.</p>
+    <label for="name">Name oder Kürzel (für die Abgabe)</label>
+    <input type="text" id="name" data-key="name" autocomplete="off" style="width:min(100%,360px)">
+    <p class="small">Eure Eingaben werden nur auf diesem Gerät gespeichert. Gebt keine weiteren persönlichen Daten ein.</p>
+    <div class="row"><button class="btn" data-go="1">Los geht's: Bauteile erkennen</button></div>
+  </div>
+</section>
+
+<!-- ============ 1 BAUTEILE ERKENNEN ============ -->
+<section class="step" data-title="Bauteile erkennen">
+  <div class="card">
+    <h2>Bauteile erkennen und kennzeichnen</h2>
+    <p>Wählt zu jedem Schaltzeichen die richtige Benennung und die Kennzeichnung nach DIN EN 81346-2 (wie im Unterricht, z.&nbsp;B. -MM1).</p>
+    <div class="grid" id="symGrid"></div>
+    <div class="row" style="margin-top:12px"><button class="btn" id="symCheck">Prüfen</button><span class="small" id="symScore"></span></div>
+    <div class="fb" id="symFb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 2 BAUTEILE BESCHREIBEN ============ -->
+<section class="step" data-title="Bauteile beschreiben">
+  <div class="card">
+    <h2>Bauteile beschreiben</h2>
+    <div class="task">
+      <h3><span class="num">a</span>Was bedeuten die Anschlussbezeichnungen?</h3>
+      <div id="portTask"></div>
+      <div class="row"><button class="btn" id="portCheck">Prüfen</button></div>
+      <div class="fb" id="portFb" aria-live="polite"></div>
+    </div>
+    <div class="task">
+      <h3><span class="num">b</span>Ventilbezeichnung lesen</h3>
+      <p>Ein Wegeventil wird mit zwei Zahlen bezeichnet, z.&nbsp;B. 5/2-Wegeventil.</p>
+      <div class="ans"><label for="vb1" style="margin:0">Die erste Zahl (5) gibt die Anzahl der</label>
+        <select id="vb1" data-key="vb1" class="inline"><option value="">– wählen –</option><option value="a">Anschlüsse</option><option value="s">Schaltstellungen</option><option value="b">Betätigungen</option></select> an.</div>
+      <div class="ans"><label for="vb2" style="margin:0">Die zweite Zahl (2) gibt die Anzahl der</label>
+        <select id="vb2" data-key="vb2" class="inline"><option value="">– wählen –</option><option value="a">Anschlüsse</option><option value="s">Schaltstellungen</option><option value="b">Betätigungen</option></select> an.</div>
+      <div class="ans"><label for="vb3" style="margin:0">Die Ruhestellung (Ausgangsstellung) wird gezeichnet im</label>
+        <select id="vb3" data-key="vb3" class="inline"><option value="">– wählen –</option><option value="r">Feld, an dem die Leitungen angeschlossen sind</option><option value="l">immer linken Feld</option><option value="m">Feld mit der Betätigung</option></select></div>
+      <div class="row"><button class="btn" id="vbCheck">Prüfen</button></div>
+      <div class="fb" id="vbFb" aria-live="polite"></div>
+    </div>
+    <div class="task">
+      <h3><span class="num">c</span>Drosselrückschlagventil – Lückentext</h3>
+      <div id="gapTask"></div>
+      <div class="row"><button class="btn" id="gapCheck">Prüfen</button></div>
+      <div class="fb" id="gapFb" aria-live="polite"></div>
+    </div>
+    <div class="task">
+      <h3><span class="num">d</span>Beschreibt Aufbau und Funktion eines doppeltwirkenden Zylinders.</h3>
+      <p class="small">Satzanfang, falls ihr Hilfe braucht: „Ein doppeltwirkender Zylinder hat zwei Druckluftanschlüsse … Beim Vorhub strömt die Druckluft …“</p>
+      <label for="ft1">Eure Beschreibung</label>
+      <textarea id="ft1" data-key="ft1"></textarea>
+      <div class="row"><button class="btn sec" data-ft="ft1">Mit Kriterien vergleichen</button></div>
+      <div class="fb hint" id="ft1Fb"></div>
+    </div>
+    <div class="task">
+      <h3><span class="num">e</span>Welche Anforderungen muss ein Wegeventil erfüllen, um einen doppeltwirkenden Zylinder ansteuern zu können?</h3>
+      <label for="ft2">Eure Antwort</label>
+      <textarea id="ft2" data-key="ft2"></textarea>
+      <div class="row"><button class="btn sec" data-ft="ft2">Mit Kriterien vergleichen</button></div>
+      <div class="fb hint" id="ft2Fb"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 SCHALTPLAN LESEN ============ -->
+<section class="step" data-title="Schaltplan lesen">
+  <div class="card">
+    <h2>Schaltplan lesen: Spannvorrichtung</h2>
+    <p>An einer Spannvorrichtung kann der Spannzylinder von zwei Seiten der Maschine gestartet werden. Lest den Schaltplan. Mit den Tastern könnt ihr die Steuerung ausprobieren (Simulation, vereinfacht).</p>
+    <div class="two">
+      <div>
+        <div class="plan sim" id="simPlan"></div>
+        <div class="simbtns">
+          <button class="btn" data-sim="s1">-SJ1 drücken</button>
+          <button class="btn" data-sim="s2">-SJ2 drücken</button>
+          <button class="btn" data-sim="s3">-SJ3 drücken</button>
+          <button class="btn sec" id="simReset">Zurücksetzen</button>
+        </div>
+        <p class="simstat" id="simStat" aria-live="polite"></p>
+        <p class="small">Blau dick = Leitung steht unter Druck. Blau hinterlegt = aktive Schaltstellung.</p>
+      </div>
+      <div id="readQs"></div>
+    </div>
+    <div class="row"><button class="btn" id="readCheck">Antworten prüfen</button><span class="small" id="readScore"></span></div>
+    <div class="task">
+      <h3><span class="num">7</span>Bringt den Steuerungsablauf in die richtige Reihenfolge.</h3>
+      <p class="small">Mit ▲ und ▼ verschieben.</p>
+      <ol class="order" id="orderList"></ol>
+      <div class="row"><button class="btn" id="orderCheck">Reihenfolge prüfen</button></div>
+      <div class="fb" id="orderFb" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 SCHALTPLAN ERSTELLEN (Baukasten) ============ -->
+<section class="step" data-title="Schaltplan erstellen">
+  <div class="card">
+    <h2>Schaltplan erstellen: Einpressvorrichtung</h2>
+    <div class="info"><b>Aufgabenstellung:</b> Mit einer Einpressvorrichtung werden Lagerbuchsen in ein Gehäuse gepresst. Durch Betätigen des Tasters -SJ1 fährt die Kolbenstange eines doppeltwirkenden Zylinders aus. Erreicht sie die vordere Endlage, wird das Rollenhebelventil -BG1 betätigt und die Kolbenstange fährt automatisch zurück. Die Ausfahrgeschwindigkeit soll einstellbar sein. Als Stellglied wird ein 5/2-Wegeventil -QM1 eingesetzt, das seine Schaltstellung beibehält, bis das Gegensignal kommt.</div>
+    <p>Stellt den Schaltplan Ebene für Ebene zusammen. Die Reihenfolge entspricht dem Aufbau im Schaltplan: oben das Arbeitselement, ganz unten die Versorgung.</p>
+    <div id="kitLayers"></div>
+    <h3>Anschlüsse am Stellglied -QM1</h3>
+    <div id="kitPorts"></div>
+    <div class="row"><button class="btn" id="kitCheck">Schaltplan prüfen</button><button class="btn sec" id="kitSol" disabled>Musterlösung zeigen</button></div>
+    <div class="fb" id="kitFb" aria-live="polite"></div>
+    <div id="kitSolBox" style="display:none">
+      <h3>Musterlösung</h3>
+      <div class="plan" id="planB"></div>
+      <p class="small">Drosselrückschlagventil -RZ1 in der Leitung zur Kolbenstangenseite: Die abströmende Luft wird beim Ausfahren gedrosselt (Abluftdrosselung), der Kolben ist zwischen zwei Luftpolstern eingespannt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 SCHALTPLAN ZEICHNEN ============ -->
+<section class="step" data-title="Schaltplan zeichnen">
+  <div class="card">
+    <h2>Selbst zeichnen: Biegestation mit Zweihandbedienung</h2>
+    <div class="info"><b>Aufgabenstellung:</b> An einer Biegestation wird ein Blechstreifen mit einem Biegestempel umgeformt. Aus Sicherheitsgründen fährt die Kolbenstange des doppeltwirkenden Zylinders -MM1 nur aus, wenn die beiden Taster -SJ1 <b>und</b> -SJ2 gleichzeitig betätigt werden. In der vorderen Endlage wird das Rollenhebelventil -BG1 betätigt, die Kolbenstange fährt automatisch zurück. Die Ausfahrgeschwindigkeit soll einstellbar sein. Stellglied ist ein beidseitig pneumatisch betätigtes 5/2-Wegeventil -QM1.</div>
+    <p><b>Arbeitsauftrag:</b> Zeichnet den vollständigen pneumatischen Schaltplan auf Papier oder in eurer Notiz-App. Kennzeichnet alle Bauteile und tragt alle Anschlussbezeichnungen ein. Denkt an die Regel aus dem Unterricht: Ohne weitere Angabe wird mit <b>Abluftdrosselung</b> gearbeitet.</p>
+    <details><summary>Tipp 1: Wie verknüpfe ich zwei Taster mit UND?</summary><p>Schaltet die beiden 3/2-Wegeventile in Reihe: Anschluss 2 von -SJ1 führt zu Anschluss 1 von -SJ2. Nur wenn beide betätigt sind, kommt Druckluft am Ausgang von -SJ2 an.</p></details>
+    <details><summary>Tipp 2: Wo sitzt das Drosselrückschlagventil?</summary><p>Die Ausfahrbewegung wird über die abströmende Luft der Kolbenstangenseite gedrosselt. Das Drosselrückschlagventil sitzt also in der Leitung zwischen Anschluss 2 von -QM1 und der Kolbenstangenseite. Freier Durchfluss zum Zylinder hin.</p></details>
+    <div class="row" style="margin:10px 0"><label class="opt" style="flex:1"><input type="checkbox" id="drawn" data-key="drawn"> Ich habe meinen Schaltplan fertig gezeichnet.</label></div>
+    <div id="drawCheckBox" style="display:none">
+      <h3>Selbstkontrolle – vergleicht euren Schaltplan</h3>
+      <ul class="check" id="drawCheck"></ul>
+      <div class="plan" id="planC" style="max-width:640px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 KOLBENKRAFT ============ -->
+<section class="step" data-title="Kolbenkraft berechnen">
+  <div class="card">
+    <h2>Kolbenkraft berechnen</h2>
+    <div class="info">
+      <p><b>Wirksame Kolbenkraft:</b> <span class="formula">F = p<sub>e</sub> · A · η</span></p>
+      <p>Vorhub (Kolbenfläche): <span class="formula">A = π · D² / 4</span> &nbsp; Rückhub (Kreisringfläche): <span class="formula">A = π · (D² − d²) / 4</span></p>
+      <p>Umrechnung: <b>1 bar = 10 N/cm²</b>. Rechnet A in cm², p<sub>e</sub> in N/cm², dann kommt F in N heraus.</p>
+    </div>
+    <div id="calcK"></div>
+  </div>
+</section>
+
+<!-- ============ 7 LUFTVERBRAUCH ============ -->
+<section class="step" data-title="Luftverbrauch berechnen">
+  <div class="card">
+    <h2>Luftverbrauch berechnen</h2>
+    <div class="info">
+      <p>Einfachwirkender Zylinder: <span class="formula">Q = A · s · n · (p<sub>e</sub> + p<sub>amb</sub>) / p<sub>amb</sub></span></p>
+      <p>Doppeltwirkender Zylinder (Kolbenstange vernachlässigt): <span class="formula">Q = 2 · A · s · n · (p<sub>e</sub> + p<sub>amb</sub>) / p<sub>amb</sub></span></p>
+      <p>p<sub>amb</sub> = 1 bar. Der Bruch (p<sub>e</sub> + p<sub>amb</sub>) / p<sub>amb</sub> ist das Verdichtungsverhältnis. Umrechnung: 1 l = 1 dm³ = 1000 cm³.</p>
+      <p class="small">Ihr dürft auch mit dem spezifischen Luftverbrauch q aus Tabelle oder Diagramm im Tabellenbuch rechnen (Q = q · s · n bzw. Q = 2 · q · s · n). Dann weicht euer Ergebnis leicht ab; das wird toleriert.</p>
+    </div>
+    <div id="calcL"></div>
+  </div>
+</section>
+
+<!-- ============ 8 KOMPETENZCHECK ============ -->
+<section class="step" data-title="Kompetenzcheck">
+  <div class="card">
+    <h2>Kompetenzcheck – Probelauf</h2>
+    <p>Bearbeitet alle Aufgaben ohne Tipps. Die Auswertung erscheint erst, wenn ihr auf „Auswerten“ tippt. Tabellenbuch erlaubt.</p>
+    <div id="kcQs"></div>
+    <div class="row"><button class="btn" id="kcCheck">Auswerten</button></div>
+    <div id="kcRes" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 9 ABSCHLUSS ============ -->
+<section class="step" data-title="Abschluss und Abgabe">
+  <div class="card">
+    <h2>Selbsteinschätzung</h2>
+    <p>Wie sicher fühlt ihr euch für die Klassenarbeit?</p>
+    <table class="self" id="selfTbl"></table>
+    <label for="ft3">Was wiederhole ich bis zur Klassenarbeit noch einmal?</label>
+    <textarea id="ft3" data-key="ft3" style="min-height:80px"></textarea>
+  </div>
+  <div class="card">
+    <h2>Abgabe</h2>
+    <p id="cfgAbgabe"></p>
+    <div class="row">
+      <button class="btn" id="printBtn">Abgabeseite drucken / als PDF</button>
+      <button class="btn sec" id="copyBtn">Ergebnistext kopieren</button>
+    </div>
+    <div class="fb" id="abgFb" aria-live="polite"></div>
+    <label for="resultTxt">Ergebnistext (falls Kopieren oder Drucken gesperrt ist: markieren und kopieren oder abfotografieren)</label>
+    <textarea id="resultTxt" readonly style="min-height:180px;font-size:.9rem"></textarea>
+  </div>
+  <div class="card">
+    <h2>Sichern und wiederherstellen</h2>
+    <p class="small">Mit dem Sicherungscode könnt ihr euren Stand auf einem anderen Gerät oder nach dem Löschen wiederherstellen.</p>
+    <div class="row"><button class="btn sec" id="expBtn">Sicherungsdatei herunterladen</button><button class="btn sec" id="codeBtn">Sicherungscode anzeigen</button></div>
+    <label for="codeTxt">Sicherungscode</label>
+    <textarea id="codeTxt" style="min-height:70px;font-size:.8rem"></textarea>
+    <div class="row"><button class="btn sec" id="impCode">Code einlesen</button>
+      <label class="btn sec" for="impFile" style="margin:0;display:inline-flex;align-items:center">Datei einlesen</label><input type="file" id="impFile" accept=".json,application/json" class="sr"></div>
+    <div class="fb" id="impFb" aria-live="polite"></div>
+    <div class="row" style="margin-top:12px"><button class="btn ghost" id="resetBtn">Alles zurücksetzen</button></div>
+    <div class="dlg" id="resetDlg" role="alertdialog" aria-labelledby="resetQ"><p id="resetQ"><b>Wirklich alle Eingaben löschen?</b> Das kann nicht rückgängig gemacht werden.</p>
+      <div class="row"><button class="btn" id="resetYes">Ja, löschen</button><button class="btn sec" id="resetNo">Abbrechen</button></div></div>
+  </div>
+</section>
+
+<div class="footnav"><button class="btn sec" id="prev2">◀ Zurück</button><button class="btn" id="next2">Weiter ▶</button></div>
+
+<div id="printArea"></div>
+</div>
+
+<script>
+/* ================= KONFIGURATION (hier anpassen) ================= */
+var CONFIG = {
+  klasse: 'MZE2 / MFW2',                 // Anzeige im Kopf
+  zeit: 'ca. 90 Minuten',                 // Zeitbedarf auf der Startseite
+  abgabe: 'Gebt in LearningView die Abgabeseite als PDF oder Foto ab. Wenn das nicht klappt: Ergebnistext kopieren und in das Antwortfeld einfügen.',
+  tolKraft: 0.015,                        // relative Toleranz Kolbenkraft (1,5 %)
+  tolLuft: 0.04,                          // relative Toleranz Luftverbrauch (4 %, wegen q-Tabellenwerten)
+  storeKey: 'bbs_mze2mfw2_pneumatik_v1',
+  version: 1
+};
+/* ================================================================= */
+</script>
+<script>
+/* Pneumatik-Schaltzeichen (vereinfacht, nach Unterrichtsdarstellung) – eine Quelle für HTML und Folien.
+   Jede Funktion liefert {svg, p:{port:[x,y]}}. Koordinaten in SVG-Einheiten. */
+var PN = (function () {
+  var INK = 'var(--sym,#183247)';
+  function f(n) { return Math.round(n * 10) / 10; }
+  function L(x1, y1, x2, y2, extra) { return '<line x1="' + f(x1) + '" y1="' + f(y1) + '" x2="' + f(x2) + '" y2="' + f(y2) + '" ' + (extra || '') + '/>'; }
+  function T(x, y, s, cls, anchor) { return '<text x="' + f(x) + '" y="' + f(y) + '" class="' + (cls || 'pn-t') + '"' + (anchor ? ' text-anchor="' + anchor + '"' : '') + '>' + s + '</text>'; }
+  function arrow(x1, y1, x2, y2) {
+    var a = Math.atan2(y2 - y1, x2 - x1), h = 6, w = 3.2;
+    var bx = x2 - h * Math.cos(a), by = y2 - h * Math.sin(a);
+    var px = -Math.sin(a) * w, py = Math.cos(a) * w;
+    return L(x1, y1, bx, by) + '<polygon class="pn-fill" points="' + f(x2) + ',' + f(y2) + ' ' + f(bx + px) + ',' + f(by + py) + ' ' + f(bx - px) + ',' + f(by - py) + '"/>';
+  }
+  function block(x, yEdge, dir) { // T-Sperre; dir=+1 von unten (Kante unten), -1 von oben
+    var y2 = yEdge - dir * 8;
+    return L(x, yEdge, x, y2) + L(x - 5, y2, x + 5, y2);
+  }
+  function exhaust(x, y) { // Entlüftung: Stich + Dreieck (Spitze weg vom Ventil)
+    return L(x, y, x, y + 7) + '<polygon class="pn-open" points="' + f(x - 5) + ',' + f(y + 7) + ' ' + f(x + 5) + ',' + f(y + 7) + ' ' + f(x) + ',' + f(y + 14) + '"/>';
+  }
+  function spring(x, y, dir) { // Feder seitlich, dir=+1 nach rechts
+    var s = '', pts = [];
+    for (var i = 0; i <= 6; i++) pts.push(f(x + dir * i * 3.5) + ',' + f(y + (i === 0 || i === 6 ? 0 : (i % 2 ? -7 : 7))));
+    return '<polyline class="pn-line" points="' + pts.join(' ') + '"/>';
+  }
+  function actuator(type, x, y, dir) { // x = Kastenkante, y = Mitte, dir=-1 links
+    var e = x + dir * 14, s = L(x, y, e, y);
+    if (type === 'taster') { s += L(e, y - 8, e, y + 8) + '<path class="pn-line" d="M' + f(e) + ' ' + f(y - 8) + ' A8 8 0 0 ' + (dir < 0 ? 0 : 1) + ' ' + f(e) + ' ' + f(y + 8) + '"/>'; }
+    else if (type === 'rolle') { s += '<circle class="pn-open" cx="' + f(e + dir * 5) + '" cy="' + f(y) + '" r="5"/>'; }
+    else if (type === 'pneu') { s = '<polygon class="pn-open" points="' + f(x) + ',' + f(y) + ' ' + f(x + dir * 9) + ',' + f(y - 5) + ' ' + f(x + dir * 9) + ',' + f(y + 5) + '"/>' + L(x + dir * 9, y, x + dir * 16, y, 'class="pn-dash"'); }
+    else if (type === 'feder') { s = spring(x, y, dir); }
+    else if (type === 'raste') { s += L(e, y - 8, e, y + 8) + '<path class="pn-line" d="M' + f(e) + ' ' + f(y - 8) + ' A8 8 0 0 ' + (dir < 0 ? 0 : 1) + ' ' + f(e) + ' ' + f(y + 8) + '"/>' + '<polyline class="pn-line" points="' + f(x + dir * 4) + ',' + f(y - 9) + ' ' + f(x + dir * 7) + ',' + f(y - 5) + ' ' + f(x + dir * 10) + ',' + f(y - 9) + '"/>'; }
+    return s;
+  }
+
+  /* 3/2-Wegeventil, in Ruhestellung gesperrt (rechtes Feld = Ruhestellung) */
+  function v32(x, y, o) {
+    o = o || {}; var S = o.S || 34, rx = x + S, a = 0.3 * S, b = 0.7 * S, s = '';
+    var act = o.active ? 1 : 0;
+    s += '<rect class="pn-box' + (act ? ' pn-on' : '') + '" x="' + f(x) + '" y="' + f(y) + '" width="' + S + '" height="' + S + '"/>';
+    s += '<rect class="pn-box' + (!act ? ' pn-on' : '') + '" x="' + f(rx) + '" y="' + f(y) + '" width="' + S + '" height="' + S + '"/>';
+    // links (betätigt): 1->2, 3 gesperrt
+    s += arrow(x + a, y + S - 2, x + a, y + 3) + block(x + b, y + S, 1);
+    // rechts (Ruhe): 2->3, 1 gesperrt
+    s += arrow(rx + a, y + 3, rx + b, y + S - 2) + block(rx + a, y + S, 1);
+    s += L(rx + a, y, rx + a, y - 8) + L(rx + a, y + S, rx + a, y + S + 8);
+    s += exhaust(rx + b, y + S);
+    if (o.nums !== false) { s += T(rx + a + 4, y - 2, '2', 'pn-n') + T(rx + a - 9, y + S + 12, '1', 'pn-n') + T(rx + b + 6, y + S + 10, '3', 'pn-n'); }
+    s += actuator(o.left || 'taster', x, y + S / 2, -1) + actuator('feder', x + 2 * S, y + S / 2, 1);
+    if (o.label) s += T(x - 6, y - 6, o.label, 'pn-lab', 'end');
+    return { svg: s, p: { 1: [rx + a, y + S + 8], 2: [rx + a, y - 8] } };
+  }
+
+  /* 5/2-Wegeventil (rechtes Feld = Ruhestellung: 1->2, 4->5) */
+  function v52(x, y, o) {
+    o = o || {}; var S = o.S || 44, rx = x + S, s = '';
+    var X = { 4: 0.25 * S, 2: 0.75 * S, 5: 0.2 * S, 1: 0.5 * S, 3: 0.8 * S };
+    var act = o.active ? 1 : 0;
+    s += '<rect class="pn-box' + (act ? ' pn-on' : '') + '" x="' + f(x) + '" y="' + f(y) + '" width="' + S + '" height="' + S + '"/>';
+    s += '<rect class="pn-box' + (!act ? ' pn-on' : '') + '" x="' + f(rx) + '" y="' + f(y) + '" width="' + S + '" height="' + S + '"/>';
+    // links (geschaltet): 1->4, 2->3, 5 gesperrt
+    s += arrow(x + X[1], y + S - 2, x + X[4], y + 3) + arrow(x + X[2], y + 3, x + X[3], y + S - 2) + block(x + X[5], y + S, 1);
+    // rechts (Ruhe): 1->2, 4->5, 3 gesperrt
+    s += arrow(rx + X[1], y + S - 2, rx + X[2], y + 3) + arrow(rx + X[4], y + 3, rx + X[5], y + S - 2) + block(rx + X[3], y + S, 1);
+    s += L(rx + X[4], y, rx + X[4], y - 8) + L(rx + X[2], y, rx + X[2], y - 8) + L(rx + X[1], y + S, rx + X[1], y + S + 8);
+    s += exhaust(rx + X[5], y + S) + exhaust(rx + X[3], y + S);
+    if (o.nums !== false) {
+      s += T(rx + X[4] - 10, y - 2, '4', 'pn-n') + T(rx + X[2] + 4, y - 2, '2', 'pn-n') + T(rx + X[5] - 11, y + S + 10, '5', 'pn-n') + T(rx + X[1] - 10, y + S + 13, '1', 'pn-n') + T(rx + X[3] + 6, y + S + 10, '3', 'pn-n');
+    }
+    var lt = o.left || 'pneu', rt = o.right || 'pneu';
+    s += actuator(lt, x, y + S / 2, -1) + actuator(rt, x + 2 * S, y + S / 2, 1);
+    if (lt === 'pneu' && o.nums !== false) s += T(x - 18, y + S / 2 - 7, '14', 'pn-n', 'end');
+    if (rt === 'pneu' && o.nums !== false) s += T(x + 2 * S + 18, y + S / 2 - 7, '12', 'pn-n');
+    if (o.label) s += T(x - 6, y - 6, o.label, 'pn-lab', 'end');
+    return { svg: s, p: { 1: [rx + X[1], y + S + 8], 2: [rx + X[2], y - 8], 4: [rx + X[4], y - 8], 14: [x - 16, y + S / 2], 12: [x + 2 * S + 16, y + S / 2] } };
+  }
+
+  /* Zylinder: type 'dw' doppeltwirkend, 'ew' einfachwirkend (Federrückstellung); pos 0..1 */
+  function cyl(x, y, o) {
+    o = o || {}; var W = o.w || 130, H = o.h || 30, pos = o.pos || 0, s = '';
+    var px = x + 14 + pos * (W - 34);
+    s += '<rect class="pn-box" x="' + f(x) + '" y="' + f(y) + '" width="' + W + '" height="' + H + '"/>';
+    s += '<rect class="pn-fill" x="' + f(px - 2.5) + '" y="' + f(y + 1) + '" width="5" height="' + (H - 2) + '"/>';
+    var rodEnd = px + W + 6;
+    s += '<rect class="pn-open" x="' + f(px + 2.5) + '" y="' + f(y + H / 2 - 3) + '" width="' + f(rodEnd - px - 2.5) + '" height="6"/>';
+    if (o.type === 'ew') {
+      var pts = [], x0 = px + 6, x1 = x + W - 3, n = 8;
+      for (var i = 0; i <= n; i++) pts.push(f(x0 + (x1 - x0) * i / n) + ',' + f(y + H / 2 + (i === 0 || i === n ? 0 : (i % 2 ? -10 : 10))));
+      s += '<polyline class="pn-line" points="' + pts.join(' ') + '"/>';
+      s += L(x + 10, y + H, x + 10, y + H + 8);
+      s += L(x + W - 10, y + H, x + W - 10, y + H + 5) + '';
+    } else {
+      s += L(x + 10, y + H, x + 10, y + H + 8) + L(x + W - 10, y + H, x + W - 10, y + H + 8);
+    }
+    if (o.label) s += T(x - 8, y + H / 2 + 5, o.label, 'pn-lab', 'end');
+    return { svg: s, p: { K: [x + 10, y + H + 8], S: [x + W - 10, y + H + 8] }, rodEnd: rodEnd };
+  }
+
+  /* Drosselrückschlagventil senkrecht, Anschlüsse oben/unten; free:'up' = freier Durchfluss nach oben */
+  function drv(cx, y, o) {
+    o = o || {}; var s = '', H = 64, bx = cx + 22, cy = y + 32, up = (o.free || 'up') === 'up';
+    s += '<rect class="pn-dashbox" x="' + f(cx - 17) + '" y="' + f(y + 6) + '" width="52" height="' + (H - 12) + '" rx="2"/>';
+    s += L(cx, y, cx, y + 22) + L(cx, y + 42, cx, y + H);
+    s += '<path class="pn-line" d="M' + f(cx - 7) + ' ' + f(y + 22) + ' Q' + f(cx - 1) + ' ' + f(cy) + ' ' + f(cx - 7) + ' ' + f(y + 42) + ' M' + f(cx + 7) + ' ' + f(y + 22) + ' Q' + f(cx + 1) + ' ' + f(cy) + ' ' + f(cx + 7) + ' ' + f(y + 42) + '"/>';
+    s += L(cx, y + 22, cx, y + 42);
+    s += arrow(cx - 12, y + 44, cx + 12, y + 20);
+    s += L(cx, y + 12, bx, y + 12) + L(cx, y + H - 12, bx, y + H - 12);
+    if (up) { // V-Spitze unten, Kugel oben -> frei nach oben
+      s += L(bx, y + 12, bx, cy - 9) + L(bx, cy + 6, bx, y + H - 12);
+      s += '<polyline class="pn-line" points="' + f(bx - 6) + ',' + f(cy - 3) + ' ' + f(bx) + ',' + f(cy + 6) + ' ' + f(bx + 6) + ',' + f(cy - 3) + '"/>';
+      s += '<circle class="pn-open" cx="' + f(bx) + '" cy="' + f(cy - 4.5) + '" r="4.5"/>';
+    } else {
+      s += L(bx, y + 12, bx, cy - 6) + L(bx, cy + 9, bx, y + H - 12);
+      s += '<polyline class="pn-line" points="' + f(bx - 6) + ',' + f(cy + 3) + ' ' + f(bx) + ',' + f(cy - 6) + ' ' + f(bx + 6) + ',' + f(cy + 3) + '"/>';
+      s += '<circle class="pn-open" cx="' + f(bx) + '" cy="' + f(cy + 4.5) + '" r="4.5"/>';
+    }
+    if (o.label) s += T(cx + 40, y + 20, o.label, 'pn-lab');
+    return { svg: s, p: { top: [cx, y], bot: [cx, y + H] } };
+  }
+
+  /* Aufbereitungseinheit (vereinfacht) mit Druckquelle links */
+  function az(x, y, o) {
+    o = o || {}; var s = '', W = 40, H = 24, m = y + H / 2;
+    s += '<polygon class="pn-open" points="' + f(x - 26) + ',' + f(m - 6) + ' ' + f(x - 26) + ',' + f(m + 6) + ' ' + f(x - 16) + ',' + f(m) + '"/>' + L(x - 16, m, x, m);
+    s += '<rect class="pn-box" x="' + f(x) + '" y="' + f(y) + '" width="' + W + '" height="' + H + '"/>';
+    s += L(x + 7, y + 4, x + 7, y + H - 4);
+    s += '<circle class="pn-open" cx="' + f(x + 24) + '" cy="' + f(m) + '" r="8"/>' + arrow(x + 19, m + 5, x + 29, m - 5);
+    if (o.label) s += T(x + W / 2, y + H + 16, o.label, 'pn-lab', 'middle');
+    return { svg: s, p: { out: [x + W, m] } };
+  }
+
+  /* Wechselventil (ODER) waagerecht: Eingänge 1 links/rechts, Ausgang 2 oben */
+  function kh(x, y, o) {
+    o = o || {}; var s = '', W = 44, H = 20, m = y + H / 2;
+    s += '<rect class="pn-box" x="' + f(x) + '" y="' + f(y) + '" width="' + W + '" height="' + H + '"/>';
+    s += L(x, m, x + 8, m) + L(x + W - 8, m, x + W, m) + L(x + W / 2, y, x + W / 2, y + 4);
+    s += '<polyline class="pn-line" points="' + f(x + 13) + ',' + f(y + 3) + ' ' + f(x + 8) + ',' + f(m) + ' ' + f(x + 13) + ',' + f(y + H - 3) + '"/>';
+    s += '<polyline class="pn-line" points="' + f(x + W - 13) + ',' + f(y + 3) + ' ' + f(x + W - 8) + ',' + f(m) + ' ' + f(x + W - 13) + ',' + f(y + H - 3) + '"/>';
+    s += '<circle class="pn-open" cx="' + f(x + 15) + '" cy="' + f(m) + '" r="5"/>';
+    if (o.nums !== false) s += T(x + W / 2 + 4, y - 3, '2', 'pn-n') + T(x - 4, m - 4, '1', 'pn-n', 'end') + T(x + W + 4, m - 4, '1', 'pn-n');
+    if (o.label) s += T(x + W / 2, y + H + 15, o.label, 'pn-lab', 'middle');
+    return { svg: s, p: { L: [x, m], R: [x + W, m], 2: [x + W / 2, y] } };
+  }
+
+  function wire(pts, o) { // pts: [[x,y],...]
+    o = o || {};
+    return '<polyline class="' + (o.ctrl ? 'pn-dash' : 'pn-line') + (o.cls ? ' ' + o.cls : '') + '"' + (o.id ? ' id="' + o.id + '"' : '') + ' points="' + pts.map(function (p) { return f(p[0]) + ',' + f(p[1]); }).join(' ') + '"/>';
+  }
+  function dot(x, y) { return '<circle class="pn-fill" cx="' + f(x) + '" cy="' + f(y) + '" r="3"/>'; }
+  function bgMark(x, y, label) { return L(x, y, x, y + 12) + T(x, y - 4, label, 'pn-lab', 'middle'); }
+  function label(x, y, s, a) { return T(x, y, s, 'pn-lab', a); }
+
+  var CSS = '.pn-line,.pn-box,.pn-open,.pn-dashbox,.pn-dash,line{stroke:' + INK + ';stroke-width:1.6;fill:none;stroke-linejoin:round}' +
+    '.pn-box{fill:var(--symbg,#fff)}.pn-open{fill:var(--symbg,#fff)}.pn-fill{fill:' + INK + ';stroke:none}' +
+    '.pn-dash{stroke-dasharray:6 4}.pn-dashbox{stroke-dasharray:4 3;stroke-width:1.1}' +
+    '.pn-t,.pn-n,.pn-lab{fill:' + INK + ';font-family:system-ui,Calibri,Arial,sans-serif;stroke:none}.pn-n{font-size:11px}.pn-lab{font-size:14px;font-weight:600}' +
+    '.pn-on{fill:var(--symon,#e3f0fa)}.pn-p{stroke:var(--press,#183247)}';
+
+  return { v32: v32, v52: v52, cyl: cyl, drv: drv, az: az, kh: kh, wire: wire, dot: dot, bgMark: bgMark, label: label, exhaust: exhaust, CSS: CSS };
+})();
+
+/* ---- Schaltpläne aus festen Koordinaten ---- */
+var PLANS = (function () {
+  // gemeinsames Grundgerüst: Zylinder, Drossel (Stangenseite, Abluftdrosselung Vorhub), 5/2-Impulsventil
+  function core(st, opt) {
+    st = st || {}; opt = opt || {};
+    var s = '', c = PN.cyl(170, 30, { w: 140, pos: st.pos || 0, label: '-MM1' });
+    s += c.svg;
+    var bgx = 392;
+    if (opt.bg) s += PN.bgMark(bgx, 8, '-BG1');
+    var d = PN.drv(300, 92, { free: opt.free || 'up', label: '-RZ1' });
+    var v = PN.v52(223, 200, { left: 'pneu', right: 'pneu', active: st.valve, label: '-QM1' });
+    s += d.svg + v.svg;
+    var p4on = st.valve ? ' pn-p' : ' pn-x', p2on = st.valve ? ' pn-x' : ' pn-p';
+    s += PN.wire([c.p.K, [180, 178], [v.p[4][0], 178], v.p[4]], { cls: 'w4' + p4on });
+    s += PN.wire([c.p.S, d.p.top], { cls: 'w2' + p2on }) + PN.wire([d.p.bot, v.p[2]], { cls: 'w2' + p2on });
+    return { svg: s, v: v, c: c };
+  }
+  function supply(xs, y, xEnd) {
+    var a = PN.az(40, y - 12, { label: '-AZ1' }), s = a.svg;
+    s += PN.wire([a.p.out, [xEnd, y]], { cls: 'pn-p' });
+    xs.forEach(function (x) { if (x < xEnd) s += PN.dot(x, y); });
+    return s;
+  }
+  function wrap(inner, vb) { return '<svg viewBox="' + (vb || '-20 -10 520 470') + '" xmlns="http://www.w3.org/2000/svg" role="img"><style>' + PN.CSS + '.pn-p{stroke:var(--press,#183247)}</style>' + inner + '</svg>'; }
+
+  // A: Lesen – ODER-Verknüpfung (Wechselventil), Rückhub über Taster -SJ3
+  function A(st) {
+    st = st || {}; var k = core(st, {}), s = k.svg, v = k.v;
+    var kv = PN.kh(88, 270, { label: '-KH1' });
+    var s1 = PN.v32(-4, 340, { left: 'taster', label: '-SJ1', active: st.s1 });
+    var s2 = PN.v32(116, 340, { left: 'taster', label: '-SJ2', active: st.s2 });
+    var s3 = PN.v32(396, 340, { left: 'taster', label: '-SJ3', active: st.s3 });
+    s += kv.svg + s1.svg + s2.svg + s3.svg;
+    var on14 = (st.s1 || st.s2) ? ' pn-p on' : '', on12 = st.s3 ? ' pn-p on' : '';
+    s += PN.wire([kv.p[2], [110, 222], v.p[14]], { ctrl: 1, cls: 'w14' + on14 });
+    s += PN.wire([s1.p[2], [s1.p[2][0], 280], kv.p.L], { cls: 'ws1' + (st.s1 ? ' pn-p on' : '') });
+    s += PN.wire([s2.p[2], [s2.p[2][0], 280], kv.p.R], { cls: 'ws2' + (st.s2 ? ' pn-p on' : '') });
+    s += PN.wire([s3.p[2], [s3.p[2][0], 222], v.p[12]], { ctrl: 1, cls: 'w12' + on12 });
+    var y = 428;
+    s += PN.wire([s1.p[1], [s1.p[1][0], y]], { cls: 'pn-p' }) + PN.wire([s2.p[1], [s2.p[1][0], y]], { cls: 'pn-p' }) + PN.wire([s3.p[1], [s3.p[1][0], y]], { cls: 'pn-p' }) + PN.wire([v.p[1], [v.p[1][0], y]], { cls: 'pn-p' });
+    s += supply([s1.p[1][0], s2.p[1][0], v.p[1][0]], y, s3.p[1][0]);
+    return wrap(s, '-60 -10 560 470');
+  }
+
+  // B: Erstellen – Musterlösung Einpressvorrichtung (Taster -SJ1, Rollenhebel -BG1 vorne)
+  function B(st) {
+    st = st || {}; var k = core(st, { bg: 1 }), s = k.svg, v = k.v;
+    var s1 = PN.v32(66, 330, { left: 'taster', label: '-SJ1' });
+    var b1 = PN.v32(396, 330, { left: 'rolle', label: '-BG1' });
+    s += s1.svg + b1.svg;
+    s += PN.wire([s1.p[2], [s1.p[2][0], 222], v.p[14]], { ctrl: 1 });
+    s += PN.wire([b1.p[2], [b1.p[2][0], 222], v.p[12]], { ctrl: 1 });
+    var y = 428;
+    s += PN.wire([s1.p[1], [s1.p[1][0], y]]) + PN.wire([b1.p[1], [b1.p[1][0], y]]) + PN.wire([v.p[1], [v.p[1][0], y]]);
+    s += supply([s1.p[1][0], v.p[1][0]], y, b1.p[1][0]);
+    return wrap(s, '-60 -14 560 474');
+  }
+
+  // C: Zeichnen – UND durch Reihenschaltung -SJ1/-SJ2, Rückhub automatisch über -BG1
+  function C() {
+    var k = core({}, { bg: 1 }), s = k.svg, v = k.v;
+    var s2 = PN.v32(66, 262, { left: 'taster', label: '-SJ2' });
+    var s1 = PN.v32(66, 352, { left: 'taster', label: '-SJ1' });
+    var b1 = PN.v32(396, 352, { left: 'rolle', label: '-BG1' });
+    s += s1.svg + s2.svg + b1.svg;
+    s += PN.wire([s2.p[2], [s2.p[2][0], 222], v.p[14]], { ctrl: 1 });
+    s += PN.wire([s1.p[2], s2.p[1]]);
+    s += PN.wire([b1.p[2], [b1.p[2][0], 222], v.p[12]], { ctrl: 1 });
+    var y = 440;
+    s += PN.wire([s1.p[1], [s1.p[1][0], y]]) + PN.wire([b1.p[1], [b1.p[1][0], y]]) + PN.wire([v.p[1], [v.p[1][0], y]]);
+    s += supply([s1.p[1][0], v.p[1][0]], y, b1.p[1][0]);
+    return wrap(s, '-60 -14 560 486');
+  }
+
+  // Einzelsymbole für Karten
+  function sym(kind) {
+    var s = '', vb = '0 0 160 90';
+    if (kind === 'dw') { s = PN.cyl(14, 22, { w: 110 }).svg; vb = '0 0 160 72'; }
+    else if (kind === 'ew') { s = PN.cyl(14, 22, { w: 110, type: 'ew' }).svg; vb = '0 0 160 72'; }
+    else if (kind === 'v32t') { s = PN.v32(42, 24, { left: 'taster' }).svg; }
+    else if (kind === 'v32r') { s = PN.v32(42, 24, { left: 'rolle' }).svg; }
+    else if (kind === 'v52p') { s = PN.v52(34, 22, { left: 'pneu', right: 'pneu', S: 44 }).svg; vb = '0 0 160 92'; }
+    else if (kind === 'v52f') { s = PN.v52(34, 22, { left: 'pneu', right: 'feder', S: 44 }).svg; vb = '0 0 160 92'; }
+    else if (kind === 'v52h') { s = PN.v52(34, 22, { left: 'raste', right: 'feder', S: 44 }).svg; vb = '0 0 160 92'; }
+    else if (kind === 'drv') { s = PN.drv(66, 10, { free: 'up' }).svg; vb = '0 0 160 84'; }
+    else if (kind === 'drvz') { s = PN.drv(66, 10, { free: 'down' }).svg; vb = '0 0 160 84'; }
+    else if (kind === 'az') { s = PN.az(70, 30).svg; vb = '0 0 160 84'; }
+    else if (kind === 'kh') { s = PN.kh(58, 34).svg; vb = '0 0 160 84'; }
+    return '<svg viewBox="' + vb + '" xmlns="http://www.w3.org/2000/svg" role="img"><style>' + PN.CSS + '</style>' + s + '</svg>';
+  }
+  return { A: A, B: B, C: C, sym: sym };
+})();
+
+
+</script>
+<script>
+(function(){
+'use strict';
+var $=function(s,r){return (r||document).querySelector(s);}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+var S={v:CONFIG.version,ans:{},res:{},seen:{},step:0,order:null};
+
+/* ---------- Speicherung ---------- */
+var storeOK=true;
+function save(){
+  try{localStorage.setItem(CONFIG.storeKey,JSON.stringify(S));var d=new Date();$('#saveTxt').textContent='Gespeichert · '+d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});}
+  catch(e){storeOK=false;$('#saveTxt').textContent='Speichern auf diesem Gerät nicht möglich – Sicherungscode nutzen';}
+}
+function load(){try{var t=localStorage.getItem(CONFIG.storeKey);if(t){var o=JSON.parse(t);if(o&&o.ans)S=merge(o);}}catch(e){}}
+function merge(o){return {v:CONFIG.version,ans:o.ans||{},res:o.res||{},seen:o.seen||{},step:o.step||0,order:o.order||null};}
+function bindAll(){
+  $$('[data-key]').forEach(function(el){
+    var k=el.getAttribute('data-key');var v=S.ans[k];
+    if(el.type==='radio'){el.checked=(v===el.value);}
+    else if(el.type==='checkbox'){el.checked=!!v;}
+    else{el.value=(v===undefined||v===null)?'':v;}
+  });
+}
+document.addEventListener('input',onField);document.addEventListener('change',onField);
+function onField(e){var el=e.target;if(!el.hasAttribute||!el.hasAttribute('data-key'))return;var k=el.getAttribute('data-key');
+  if(el.type==='radio'){if(el.checked)S.ans[k]=el.value;}else if(el.type==='checkbox'){S.ans[k]=el.checked;}else{S.ans[k]=el.value;}
+  if(k==='drawn')showDraw();
+  if(el.classList.contains('kitSel'))renderKitPrev();
+  save();}
+
+/* ---------- Hilfen ---------- */
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function fb(id,cls,html){var e=$('#'+id);e.className='fb show '+cls;e.innerHTML=html;}
+function parseNum(s){if(s===undefined||s===null)return NaN;s=String(s).trim().replace(/\s/g,'').replace(/[a-zA-Z²³\/%·]+$/,'');
+  if(/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(s))s=s.replace(/\./g,'');s=s.replace(',','.');return s===''?NaN:Number(s);}
+function near(x,t,tol){return isFinite(x)&&Math.abs(x-t)<=Math.abs(t)*tol;}
+function fmt(x,d){return x.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d});}
+function selHTML(key,opts,ph){var h='<select id="'+key+'" data-key="'+key+'"><option value="">'+(ph||'– wählen –')+'</option>';opts.forEach(function(o){h+='<option value="'+o[0]+'">'+esc(o[1])+'</option>';});return h+'</select>';}
+
+/* ---------- Navigation ---------- */
+var steps=$$('section.step');
+function go(i){i=Math.max(0,Math.min(steps.length-1,i));steps.forEach(function(s,j){s.classList.toggle('on',j===i);});S.step=i;S.seen[i]=1;$('#stepSel').value=i;
+  $('#prevBtn').disabled=$('#prev2').disabled=(i===0);$('#nextBtn').disabled=$('#next2').disabled=(i===steps.length-1);
+  if(i===steps.length-1)buildResult();
+  updProg();save();try{window.scrollTo({top:0});}catch(e){}}
+function updProg(){var n=steps.length,d=Object.keys(S.seen).length;$('#barFill').style.width=Math.round(d/n*100)+'%';$('#progTxt').textContent='Schritt '+(S.step+1)+' von '+n+' · '+d+' besucht';}
+steps.forEach(function(s,i){var o=document.createElement('option');o.value=i;o.textContent=(i+1)+'. '+s.getAttribute('data-title');$('#stepSel').appendChild(o);});
+$('#stepSel').addEventListener('change',function(){go(+this.value);});
+$('#prevBtn').onclick=$('#prev2').onclick=function(){go(S.step-1);};
+$('#nextBtn').onclick=$('#next2').onclick=function(){go(S.step+1);};
+$$('[data-go]').forEach(function(b){b.onclick=function(){go(+b.getAttribute('data-go'));};});
+
+/* ================= 1 Bauteile erkennen ================= */
+var NAMES=[['dw','Doppeltwirkender Zylinder'],['ew','Einfachwirkender Zylinder'],['v32t','3/2-Wegeventil, Taster, Federrückstellung'],['v32r','3/2-Wegeventil, Rollenhebel, Federrückstellung'],['v52p','5/2-Wegeventil, beidseitig pneumatisch betätigt (Impulsventil)'],['v52f','5/2-Wegeventil, pneumatisch betätigt, Federrückstellung'],['drv','Drosselrückschlagventil'],['az','Aufbereitungseinheit mit Druckquelle'],['kh','Wechselventil (ODER)']];
+var KZ=[['MM','-MM (Zylinder, Antrieb)'],['QM','-QM (Stellglied, Wegeventil)'],['SJ','-SJ (Taster, Handbetätigung)'],['BG','-BG (Rollenhebelventil, Grenztaster)'],['RZ','-RZ (Drossel-, Drosselrückschlagventil)'],['AZ','-AZ (Aufbereitungseinheit)'],['KH','-KH (Signalverknüpfung, z. B. Wechselventil)']];
+var SYMSET=[{k:'v52f',kz:'QM'},{k:'drv',kz:'RZ'},{k:'v32r',kz:'BG'},{k:'dw',kz:'MM'},{k:'kh',kz:'KH'},{k:'v32t',kz:'SJ'},{k:'az',kz:'AZ'},{k:'ew',kz:'MM'},{k:'v52p',kz:'QM'}];
+var SYMWHY={v52f:'5 Anschlüsse, 2 Schaltstellungen, links Steuerdreieck (pneumatisch), rechts Feder.',drv:'Drossel mit Einstellpfeil und parallel dazu ein Rückschlagventil (Kugel mit Sitz), gestrichelt umrahmt.',v32r:'3 Anschlüsse, 2 Schaltstellungen; der Kreis am Betätigungsstößel ist die Rolle.',dw:'Zwei Anschlüsse am Zylinder, keine Feder: Vor- und Rückhub mit Druckluft.',kh:'Zwei Eingänge 1, ein Ausgang 2, Kugel dazwischen: ODER-Verknüpfung.',v32t:'3 Anschlüsse, 2 Schaltstellungen; der Halbkreis ist der Drucktaster.',az:'Druckquelle (Dreieck) und Aufbereitungseinheit mit Manometer.',ew:'Nur ein Anschluss, Feder im Zylinder bewegt den Kolben zurück.',v52p:'Steuerdreiecke auf beiden Seiten (14 und 12), keine Feder: behält die Schaltstellung (Impulsventil).'};
+(function(){var h='';SYMSET.forEach(function(s,i){h+='<div class="sym" id="symc'+i+'"><div aria-hidden="true">'+PLANS.sym(s.k)+'</div><label for="sn'+i+'">Benennung</label>'+selHTML('sn'+i,NAMES)+'<label for="sk'+i+'">Kennzeichnung</label>'+selHTML('sk'+i,KZ)+'<div class="fb" id="symfb'+i+'"></div></div>';});$('#symGrid').innerHTML=h;})();
+$('#symCheck').onclick=function(){var ok=0,empty=0;SYMSET.forEach(function(s,i){var n=S.ans['sn'+i],k=S.ans['sk'+i];
+  if(!n||!k){empty++;fb('symfb'+i,'hint','Bitte Benennung und Kennzeichnung wählen.');return;}
+  var g=(n===s.k),gk=(k===s.kz);if(g&&gk)ok++;
+  fb('symfb'+i,g&&gk?'ok':'no',(g&&gk?'<b class="tag">✓ Richtig.</b>':'<b class="tag">✗ '+(!g?'Benennung':'')+(!g&&!gk?' und ':'')+(!gk?'Kennzeichnung':'')+' prüfen.</b>')+SYMWHY[s.k]);});
+  S.res.sym=ok+'/'+SYMSET.length;$('#symScore').textContent=ok+' von '+SYMSET.length+' vollständig richtig';
+  fb('symFb',empty?'hint':(ok===SYMSET.length?'ok':'no'),empty?'Noch nicht alle Felder ausgefüllt.':(ok===SYMSET.length?'Sehr gut, alle Bauteile erkannt.':'Schaut euch die markierten Karten an: Zählt Anschlüsse und Felder und achtet auf die Betätigung.'));save();};
+
+/* ================= 2 Bauteile beschreiben ================= */
+var PORTS=[['1','p1'],['2 und 4','p24'],['3 und 5','p35'],['12','p12'],['14','p14']];
+var PORTOPT=[['p1','Druckluftanschluss (Versorgung)'],['p24','Arbeitsanschlüsse (zum Zylinder)'],['p35','Entlüftungsanschlüsse'],['p12','Steueranschluss: verbindet bei Signal 1 mit 2'],['p14','Steueranschluss: verbindet bei Signal 1 mit 4']];
+(function(){var h='<table class="tbl" style="width:100%"><tr><th style="width:90px">Anschluss</th><th>Bedeutung</th></tr>';PORTS.forEach(function(p,i){h+='<tr><td><b>'+p[0]+'</b></td><td><label for="pt'+i+'" class="sr">Bedeutung Anschluss '+p[0]+'</label>'+selHTML('pt'+i,PORTOPT)+'</td></tr>';});$('#portTask').innerHTML=h+'</table>';})();
+$('#portCheck').onclick=function(){var ok=0,e=0,wrong=[];PORTS.forEach(function(p,i){var v=S.ans['pt'+i];if(!v)e++;else if(v===p[1])ok++;else wrong.push(p[0]);});
+  if(e){fb('portFb','hint','Bitte alle Zeilen ausfüllen.');return;}
+  S.res.port=ok+'/5';fb('portFb',ok===5?'ok':'no',ok===5?'<b class="tag">✓ Alles richtig.</b> Merkhilfe: Die Steueranschlüsse tragen die Nummern der Anschlüsse, die bei diesem Signal verbunden werden (1→2: 12, 1→4: 14).':'<b class="tag">✗ '+ok+' von 5 richtig.</b> Prüft Anschluss '+wrong.join(', ')+'. Merkhilfe: ungerade Zahlen 3 und 5 = Entlüftung, gerade Zahlen 2 und 4 = Arbeitsleitungen. 12 heißt „verbindet 1 mit 2“.');save();};
+$('#vbCheck').onclick=function(){var a=S.ans.vb1,b=S.ans.vb2,c=S.ans.vb3;if(!a||!b||!c){fb('vbFb','hint','Bitte alle drei Felder wählen.');return;}
+  var ok=(a==='a')+(b==='s')+(c==='r');S.res.vb=ok+'/3';
+  fb('vbFb',ok===3?'ok':'no',ok===3?'<b class="tag">✓ Richtig.</b> 5/2 = 5 Anschlüsse, 2 Schaltstellungen. Die Leitungen werden am Feld der Ruhestellung angeschlossen.':'<b class="tag">✗ '+ok+' von 3 richtig.</b> Zählt am Schaltzeichen: Jedes Feld (Quadrat) ist eine Schaltstellung, die Anschlüsse zählt ihr an einem Feld. Die Ruhestellung ist das Feld, an dem die Leitungen angeschlossen sind.');save();};
+var GAPS=[
+ {t:'Beim Drosselrückschlagventil wirkt die Drosselung nur in ',o:[['e','einer Richtung'],['b','beiden Richtungen']],c:'e'},
+ {t:'. In Gegenrichtung strömt die Luft frei über das geöffnete ',o:[['r','Rückschlagventil'],['d','Drosselventil'],['w','Wegeventil']],c:'r'},
+ {t:'. Damit lässt sich die ',o:[['g','Geschwindigkeit'],['k','Kraft'],['h','Hublänge']],c:'g'},
+ {t:' der Kolbenstange einstellen. Bei der Abluftdrosselung wird die ',o:[['a','abströmende'],['z','zuströmende']],c:'a'},
+ {t:' Luft gedrosselt; der Kolben ist zwischen zwei Luftpolstern eingespannt. Bei doppeltwirkenden Zylindern verwendet man die ',o:[['ab','Abluftdrosselung'],['zu','Zuluftdrosselung']],c:'ab'},
+ {t:'.',o:null}];
+(function(){var h='<p style="line-height:2.4">';GAPS.forEach(function(g,i){h+=esc(g.t);if(g.o){h+='<label for="gp'+i+'" class="sr">Lücke '+(i+1)+'</label><select id="gp'+i+'" data-key="gp'+i+'" class="inline"><option value="">…</option>'+g.o.map(function(o){return '<option value="'+o[0]+'">'+o[1]+'</option>';}).join('')+'</select>';}});$('#gapTask').innerHTML=h+'</p>';})();
+$('#gapCheck').onclick=function(){var ok=0,n=0,e=0;GAPS.forEach(function(g,i){if(!g.o)return;n++;var v=S.ans['gp'+i];if(!v)e++;else if(v===g.c)ok++;});
+  if(e){fb('gapFb','hint','Bitte alle Lücken füllen.');return;}S.res.gap=ok+'/'+n;
+  fb('gapFb',ok===n?'ok':'no',ok===n?'<b class="tag">✓ Alles richtig.</b>':'<b class="tag">✗ '+ok+' von '+n+' richtig.</b> Denkt an den Aufbau: Drossel und Rückschlagventil sind parallel geschaltet. Bei der Zuluftdrosselung können schon kleine Lastschwankungen zu ungleichmäßigem Vorschub führen.');save();};
+var FT={
+ ft1:{min:40,k:['Zwei Druckluftanschlüsse: Kolbenseite und Kolbenstangenseite','Vorhub: Druckluft strömt in den Kolbenraum, über die Kolbenfläche entsteht eine Kraft, die Kolbenstange fährt aus','Gleichzeitig entweicht die Luft auf der Kolbenstangenseite über den Anschluss','Rückhub: Druckluft auf der Kolbenstangenseite, Luft aus dem Kolbenraum entweicht','Kraft im Rückhub kleiner, weil die Kreisringfläche kleiner ist als die Kolbenfläche','Arbeit in beiden Richtungen möglich, braucht mehr Luft als ein einfachwirkender Zylinder'],
+  m:'Ein doppeltwirkender Zylinder hat zwei Druckluftanschlüsse. Beim Vorhub strömt die Druckluft über den Anschluss der Kolbenseite in den Kolbenraum. Dort baut sich der Druck auf und erzeugt über die Kolbenfläche eine Kraft. Ist die Kraft größer als die Haftreibung, fährt die Kolbenstange aus. Die Luft im Kolbenstangenraum entweicht über den Anschluss der Kolbenstangenseite. Beim Rückhub wird umgekehrt der Kolbenstangenraum mit Druckluft beaufschlagt, die Luft aus dem Kolbenraum entweicht. Weil die Kreisringfläche kleiner ist als die Kolbenfläche, ist die Kraft beim Rückhub bei gleichem Druck kleiner. Der doppeltwirkende Zylinder kann in beiden Richtungen Arbeit verrichten, verbraucht aber mehr Luft als ein einfachwirkender Zylinder.'},
+ ft2:{min:25,k:['In beiden Schaltstellungen muss Druckluft zu einer Zylinderseite geführt werden (zwei Arbeitsanschlüsse 2 und 4)','Die jeweils andere Zylinderkammer muss entlüftet werden können (Entlüftung 3 und 5)','Deshalb z. B. ein 5/2-Wegeventil (oder zwei 3/2-Wegeventile)'],
+  m:'In beiden Schaltstellungen muss Druckluft zur Verfügung stehen, da der doppeltwirkende Zylinder ohne Druckluft nicht einfahren kann. Gleichzeitig muss die jeweils andere Kammer des Zylinders entlüftet werden. Geeignet ist z. B. ein 5/2-Wegeventil mit den Arbeitsanschlüssen 2 und 4 und den Entlüftungen 3 und 5.'}};
+$$('[data-ft]').forEach(function(b){b.onclick=function(){var k=b.getAttribute('data-ft'),t=(S.ans[k]||'').trim(),c=FT[k];
+  if(t.length<c.min){fb(k+'Fb','hint','Schreibt zuerst eine eigene Antwort (mindestens ein bis zwei vollständige Sätze). Danach seht ihr Kriterien und Musterantwort.');return;}
+  var h='<b>Hakt ab, was in eurer Antwort vorkommt:</b><ul class="check">';c.k.forEach(function(x,i){h+='<li><label><input type="checkbox" data-key="'+k+'c'+i+'"'+(S.ans[k+'c'+i]?' checked':'')+'> '+esc(x)+'</label></li>';});
+  h+='</ul><details><summary>Musterantwort anzeigen</summary><p>'+esc(c.m)+'</p></details>';fb(k+'Fb','hint',h);};});
+
+/* ================= 3 Schaltplan lesen ================= */
+var sim={valve:0,pos:0,s1:0,s2:0,s3:0},simT=null,anim=null;
+function drawSim(){$('#simPlan').innerHTML=PLANS.A(sim);
+  var t;if(sim.valve){t=sim.pos>=0.99?'Kolbenstange in vorderer Endlage (gespannt). -QM1 bleibt in Schaltstellung links, auch wenn der Taster losgelassen wird.':'-QM1 in Schaltstellung links (Signal an 14): Druckluft 1→4 auf die Kolbenseite – Kolbenstange fährt aus.';}
+  else{t=sim.pos<=0.01?'Grundstellung: Kolbenstange eingefahren. -QM1 in Ruhestellung: 1→2, Kolbenstangenseite unter Druck.':'-QM1 in Ruhestellung (Signal an 12): Druckluft 1→2 auf die Kolbenstangenseite – Kolbenstange fährt ein.';}
+  $('#simStat').textContent=t;}
+function animate(){var tgt=sim.valve?1:0;if(Math.abs(sim.pos-tgt)<0.001){anim=null;drawSim();return;}
+  var sp=sim.valve?0.012:0.03;sim.pos+= (tgt>sim.pos?1:-1)*Math.min(sp,Math.abs(tgt-sim.pos));drawSim();anim=requestAnimationFrame(animate);}
+$$('[data-sim]').forEach(function(b){b.onclick=function(){var k=b.getAttribute('data-sim');sim[k]=1;
+  if(k==='s3')sim.valve=0;else sim.valve=1;drawSim();clearTimeout(simT);simT=setTimeout(function(){sim.s1=sim.s2=sim.s3=0;drawSim();},900);if(!anim)anim=requestAnimationFrame(animate);};});
+$('#simReset').onclick=function(){sim={valve:0,pos:0,s1:0,s2:0,s3:0};if(anim){cancelAnimationFrame(anim);anim=null;}drawSim();};
+var RQ=[
+ {q:'Welches Bauteil ist das Stellglied?',o:['-KH1','-QM1','-RZ1','-SJ3'],c:1,w:'Das Stellglied steuert direkt den Zylinder an: das 5/2-Wegeventil -QM1.'},
+ {q:'Was passiert, wenn ihr nur -SJ2 betätigt?',o:['Nichts, es müssen -SJ1 und -SJ2 betätigt werden.','Die Kolbenstange fährt aus, weil das Wechselventil -KH1 das Signal an 14 weitergibt.','Die Kolbenstange fährt ein.'],c:1,w:'-KH1 ist ein Wechselventil (ODER): Ein Signal an einem der beiden Eingänge 1 genügt.'},
+ {q:'Warum fährt die Kolbenstange weiter aus, wenn der Taster schon losgelassen ist?',o:['Weil -QM1 ein Impulsventil ist und seine Schaltstellung beibehält.','Weil das Drosselrückschlagventil die Luft speichert.','Weil -SJ1 eine Rastung hat.'],c:0,w:'Beidseitig pneumatisch betätigte 5/2-Wegeventile ohne Feder bleiben in der letzten Schaltstellung, bis das Gegensignal (12) kommt.'},
+ {q:'Welche Drosselungsart ist in diesem Schaltplan verwirklicht?',o:['Zuluftdrosselung des Vorhubs','Abluftdrosselung des Vorhubs','Abluftdrosselung des Rückhubs'],c:1,w:'-RZ1 sitzt in der Leitung zur Kolbenstangenseite. Beim Ausfahren strömt dort die Abluft durch die Drossel, zum Zylinder hin strömt die Luft frei über das Rückschlagventil.'},
+ {q:'Mit welchem Anschluss von -QM1 ist die Kolbenseite des Zylinders verbunden?',o:['1','2','4','14'],c:2,w:'Anschluss 4 führt zur Kolbenseite: Bei Signal an 14 wird 1 mit 4 verbunden und die Kolbenstange fährt aus.'},
+ {q:'Was löst den Rückhub aus?',o:['Das Erreichen der vorderen Endlage','Ein Signal von -SJ3 an Anschluss 12 von -QM1','Das Loslassen von -SJ1'],c:1,w:'Nur -SJ3 schaltet -QM1 über 12 zurück. Einen Endlagenschalter gibt es in diesem Schaltplan nicht.'}];
+function mcHTML(prefix,list){var h='';list.forEach(function(x,i){h+='<fieldset class="task" style="border:1px solid var(--line)"><legend style="font-weight:700;padding:0 4px">'+(i+1)+'. '+esc(x.q)+'</legend>'+(x.pre||'');
+  x.o.forEach(function(o,j){h+='<label class="opt"><input type="radio" name="'+prefix+i+'" value="'+j+'" data-key="'+prefix+i+'"> <span>'+esc(o)+'</span></label>';});h+='<div class="fb" id="'+prefix+'fb'+i+'"></div></fieldset>';});return h;}
+$('#readQs').innerHTML=mcHTML('rq',RQ);
+$('#readCheck').onclick=function(){var ok=0;RQ.forEach(function(x,i){var v=S.ans['rq'+i];if(v===undefined){fb('rqfb'+i,'hint','Noch keine Antwort gewählt.');return;}
+  var g=(+v===x.c);if(g)ok++;fb('rqfb'+i,g?'ok':'no',(g?'<b class="tag">✓ Richtig.</b>':'<b class="tag">✗ Nicht richtig.</b>')+esc(x.w));});S.res.read=ok+'/'+RQ.length;$('#readScore').textContent=ok+' von '+RQ.length+' richtig';save();};
+var ORDER=['Taster -SJ1 oder -SJ2 wird betätigt.','Das Wechselventil -KH1 gibt das Signal an Anschluss 14 von -QM1 weiter.','-QM1 schaltet um: Anschluss 1 wird mit 4 verbunden, 2 wird über 3 entlüftet.','Die Kolbenstange fährt gedrosselt aus und spannt das Werkstück.','Taster -SJ3 wird betätigt, Signal an 12: -QM1 schaltet zurück, die Kolbenstange fährt ein.'];
+function renderOrder(){if(!S.order){S.order=[3,0,4,2,1];}var h='';S.order.forEach(function(k,i){h+='<li><span>'+esc(ORDER[k])+'</span><button class="btn ghost mv" data-mv="'+i+'" data-d="-1" aria-label="nach oben"'+(i===0?' disabled':'')+'>▲</button><button class="btn ghost mv" data-mv="'+i+'" data-d="1" aria-label="nach unten"'+(i===S.order.length-1?' disabled':'')+'>▼</button></li>';});$('#orderList').innerHTML=h;
+  $$('[data-mv]').forEach(function(b){b.onclick=function(){var i=+b.getAttribute('data-mv'),d=+b.getAttribute('data-d'),j=i+d,t=S.order[i];S.order[i]=S.order[j];S.order[j]=t;renderOrder();save();var nb=$('[data-mv="'+j+'"][data-d="'+d+'"]')||$('[data-mv="'+j+'"]');if(nb)nb.focus();};});}
+$('#orderCheck').onclick=function(){var ok=0;S.order.forEach(function(k,i){if(k===i)ok++;});S.res.order=ok+'/5';
+  fb('orderFb',ok===5?'ok':'no',ok===5?'<b class="tag">✓ Richtige Reihenfolge.</b> Signalglied → Verknüpfung → Stellglied → Arbeitselement: So lest ihr jeden Schaltplan von unten nach oben.':'<b class="tag">✗ '+ok+' von 5 an der richtigen Stelle.</b> Lest den Signalfluss von unten nach oben: Signalglied, Verknüpfung, Stellglied, Arbeitselement.');save();};
+
+/* ================= 4 Baukasten ================= */
+var KITOPT=[['dw','Doppeltwirkender Zylinder'],['ew','Einfachwirkender Zylinder'],['drv','Drosselrückschlagventil, frei zum Zylinder hin'],['drvz','Drosselrückschlagventil, frei vom Zylinder weg'],['v52p','5/2-Wegeventil, beidseitig pneumatisch (Impulsventil)'],['v52f','5/2-Wegeventil, pneumatisch, Federrückstellung'],['v52h','5/2-Wegeventil, Handhebel mit Raste'],['v32t','3/2-Wegeventil, Taster'],['v32r','3/2-Wegeventil, Rollenhebel'],['kh','Wechselventil'],['az','Aufbereitungseinheit mit Druckquelle']];
+var LAYERS=[
+ {n:'Arbeitselement',c:'dw',kz:'MM1',why:{ew:'Ein einfachwirkender Zylinder fährt durch Federkraft zurück – gefordert ist ein doppeltwirkender Zylinder.'}},
+ {n:'Geschwindigkeit (Ausfahren)',c:'drv',kz:'RZ1',where:1,why:{drvz:'So würde die Zuluft gedrosselt. Für die Abluftdrosselung muss die Luft frei zum Zylinder strömen und beim Abströmen gedrosselt werden.'}},
+ {n:'Stellglied',c:'v52p',kz:'QM1',why:{v52f:'Mit Federrückstellung würde -QM1 sofort zurückschalten, wenn -SJ1 losgelassen wird. Gefordert: Schaltstellung bleibt bis zum Gegensignal → Impulsventil.',v52h:'Das Stellglied soll pneumatisch von -SJ1 und -BG1 umgeschaltet werden, nicht von Hand.'}},
+ {n:'Signalglied Start',c:'v32t',kz:'SJ1',why:{v32r:'Den Start löst der Bediener mit einem Taster aus.'}},
+ {n:'Signalglied Rückhub',c:'v32r',kz:'BG1',why:{v32t:'Der Rückhub soll automatisch in der Endlage ausgelöst werden – dafür braucht ihr ein Rollenhebelventil.'}},
+ {n:'Versorgung',c:'az',kz:'AZ1',why:{}}];
+var KZOPT=[['MM1','-MM1'],['RZ1','-RZ1'],['QM1','-QM1'],['SJ1','-SJ1'],['BG1','-BG1'],['AZ1','-AZ1'],['KH1','-KH1']];
+(function(){var h='';LAYERS.forEach(function(L,i){
+  h+='<div class="layer"><div><div class="lname">'+esc(L.n)+'</div></div><div><label for="kb'+i+'" class="sr">Bauteil '+esc(L.n)+'</label><select id="kb'+i+'" data-key="kb'+i+'" class="kitSel"><option value="">– Bauteil wählen –</option>'+KITOPT.map(function(o){return '<option value="'+o[0]+'">'+esc(o[1])+'</option>';}).join('')+'</select>'+
+  '<label for="kk'+i+'" class="small" style="font-weight:600">Kennzeichnung</label>'+selHTML('kk'+i,KZOPT)+'<div class="fb" id="kfb'+i+'"></div></div><div class="prev" id="kp'+i+'" aria-hidden="true"><span class="small">Vorschau</span></div></div>';});
+  $('#kitLayers').innerHTML=h;
+  var P=[['kq1','Die Kolbenseite wird angeschlossen an Anschluss',[['2','2'],['4','4']],'4'],['kq2','Die Kolbenstangenseite (über -RZ1) an Anschluss',[['2','2'],['4','4']],'2'],['kq3','Die Signalleitung von -SJ1 führt zu Anschluss',[['12','12'],['14','14']],'14'],['kq4','Die Signalleitung von -BG1 führt zu Anschluss',[['12','12'],['14','14']],'12']];
+  var ph='';P.forEach(function(p){ph+='<div class="ans"><label for="'+p[0]+'" style="margin:0;font-weight:400">'+p[1]+'</label><select id="'+p[0]+'" data-key="'+p[0]+'" class="inline"><option value="">…</option>'+p[2].map(function(o){return '<option value="'+o[0]+'">'+o[1]+'</option>';}).join('')+'</select></div>';});
+  $('#kitPorts').innerHTML=ph;window._KP=P;})();
+function renderKitPrev(){LAYERS.forEach(function(L,i){var v=S.ans['kb'+i];$('#kp'+i).innerHTML=v?PLANS.sym(v):'<span class="small">Vorschau</span>';});}
+$('#kitCheck').onclick=function(){var ok=0,n=0,e=0;LAYERS.forEach(function(L,i){var b=S.ans['kb'+i],k=S.ans['kk'+i];n+=2;
+  if(!b||!k){e++;fb('kfb'+i,'hint','Bauteil und Kennzeichnung wählen.');return;}
+  var gb=b===L.c,gk=k===L.kz;ok+=gb+gk;var m='';
+  if(!gb)m+=(L.why[b]||'Dieses Bauteil passt nicht zur Aufgabenstellung. Lest die Aufgabenstellung noch einmal Satz für Satz.')+' ';
+  if(!gk)m+='Kennzeichnung prüfen: Für '+esc(L.n)+' passt sie nicht. ';
+  fb('kfb'+i,gb&&gk?'ok':'no',gb&&gk?'<b class="tag">✓</b>Passt.':'<b class="tag">✗</b>'+m);});
+  window._KP.forEach(function(p){n++;if(S.ans[p[0]]===p[3])ok++;else if(!S.ans[p[0]])e++;});
+  var pw=window._KP.filter(function(p){return S.ans[p[0]]&&S.ans[p[0]]!==p[3];}).length;
+  S.res.kit=ok+'/'+n;$('#kitSol').disabled=false;
+  fb('kitFb',e?'hint':(ok===n?'ok':'no'),(e?'Noch nicht alles ausgefüllt. ':'')+(ok===n?'<b class="tag">✓ Euer Schaltplan ist vollständig richtig.</b>':'<b>'+ok+' von '+n+' Punkten.</b> ')+(pw?' Anschlüsse: In Ruhestellung ist 1 mit 2 verbunden; die Kolbenstange soll dann eingefahren sein. Also gehört 2 zur Kolbenstangenseite, 4 zur Kolbenseite, und das Startsignal kommt an 14.':''));save();};
+$('#kitSol').onclick=function(){$('#kitSolBox').style.display='block';$('#planB').innerHTML=PLANS.B({});};
+
+/* ================= 5 Zeichnen ================= */
+var DRAWK=['Doppeltwirkender Zylinder -MM1 oben, darunter -RZ1, -QM1, Signalglieder, ganz unten die Versorgung -AZ1','-SJ1 und -SJ2 (3/2-Wegeventile, Taster, Federrückstellung) in Reihe: 2 von -SJ1 an 1 von -SJ2','Ausgang 2 von -SJ2 als Steuerleitung (gestrichelt) an 14 von -QM1','Rollenhebelventil -BG1 an 12 von -QM1, Lage von -BG1 an der vorderen Endlage markiert','-QM1: 5/2-Wegeventil beidseitig pneumatisch betätigt, 4 → Kolbenseite, 2 → Kolbenstangenseite','-RZ1 in der Leitung zur Kolbenstangenseite (Abluftdrosselung), Rückschlagventil öffnet zum Zylinder hin','Alle Anschlüsse nummeriert (1, 2, 3, 4, 5, 12, 14), Entlüftungen eingezeichnet','Alle Bauteile nach DIN EN 81346-2 gekennzeichnet (-MM1, -RZ1, -QM1, -SJ1, -SJ2, -BG1, -AZ1)'];
+function showDraw(){var on=!!S.ans.drawn;$('#drawCheckBox').style.display=on?'block':'none';if(on&&!$('#planC').innerHTML){$('#planC').innerHTML=PLANS.C();
+  $('#drawCheck').innerHTML=DRAWK.map(function(x,i){return '<li><label><input type="checkbox" data-key="dk'+i+'"'+(S.ans['dk'+i]?' checked':'')+'> '+esc(x)+'</label></li>';}).join('');}}
+
+/* ================= 6/7 Rechenaufgaben ================= */
+var CALC={
+ K1a:{grp:'K',title:'Kolbenkraft im Vorhub',txt:'Ein doppeltwirkender Zylinder einer Spannvorrichtung hat den Kolbendurchmesser D = 40 mm und den Kolbenstangendurchmesser d = 16 mm. Der Betriebsdruck beträgt p<sub>e</sub> = 6 bar, der Wirkungsgrad η = 0,88. Berechnet die wirksame Kolbenkraft beim <b>Vorhub</b>.',unit:'N',val:663.5,tol:'K',
+  tips:['Welche Fläche drückt beim Vorhub? Die volle Kolbenfläche mit D.','A = π · (4 cm)² / 4 = 12,57 cm². Rechnet den Druck in N/cm² um: 6 bar = 60 N/cm².','F = 60 N/cm² · 12,57 cm² · 0,88 = 663,5 N'],
+  err:[[754,'Ihr habt den Wirkungsgrad vergessen. F = p<sub>e</sub> · A · η.'],[66.35,'Der Druck wurde nicht umgerechnet: 1 bar = 10 N/cm².'],[6635,'Prüft die Einheit des Drucks: 6 bar = 60 N/cm², nicht 600.']]},
+ K1b:{grp:'K',title:'Kolbenkraft im Rückhub',txt:'Gleicher Zylinder wie oben (D = 40 mm, d = 16 mm, p<sub>e</sub> = 6 bar, η = 0,88). Berechnet die wirksame Kolbenkraft beim <b>Rückhub</b>.',unit:'N',val:557.3,tol:'K',
+  tips:['Beim Rückhub wirkt nur die Kreisringfläche – die Kolbenstange nimmt Fläche weg.','A = π · (D² − d²) / 4 = π · (16 cm² − 2,56 cm²) / 4 = 10,56 cm²','F = 60 N/cm² · 10,56 cm² · 0,88 = 557,3 N'],
+  err:[[663.5,'Das ist die Kraft im Vorhub. Beim Rückhub wirkt die kleinere Kreisringfläche.'],[633.3,'Wirkungsgrad vergessen.'],[238.9,'Ihr habt (D − d)² gerechnet. Richtig ist D² − d².']]},
+ K2a:{grp:'K',title:'Erforderliche Kolbenfläche',txt:'Ein Pressstempel soll im Vorhub eine wirksame Kraft von F = 1200 N aufbringen. Betriebsdruck p<sub>e</sub> = 5 bar, Wirkungsgrad η = 0,85. Berechnet die erforderliche Kolbenfläche A.',unit:'cm²',val:28.24,tol:'K',
+  tips:['Stellt die Formel nach A um: A = F / (p<sub>e</sub> · η).','p<sub>e</sub> = 5 bar = 50 N/cm²','A = 1200 N / (50 N/cm² · 0,85) = 28,24 cm²'],
+  err:[[24,'Wirkungsgrad vergessen.'],[2.824,'Druck nicht umgerechnet (5 bar = 50 N/cm²).']]},
+ K2b:{grp:'K',title:'Kolbendurchmesser auswählen',txt:'Berechnet aus A = 28,24 cm² den Mindest-Kolbendurchmesser D in mm.',unit:'mm',val:60.0,tol:'K',
+  tips:['A = π · D² / 4 → D = √(4 · A / π)','D = √(4 · 28,24 cm² / π) = √35,96 cm²','D = 6,00 cm = 60,0 mm'],
+  err:[[6,'Das Ergebnis ist in cm. Gefragt ist mm.'],[42.4,'Ihr habt die 4 vergessen: D = √(4 · A / π).'],[30,'Ihr habt den Radius berechnet. D = 2 · r.']],
+  extra:{key:'K2c',q:'Welchen Kolbendurchmesser wählt ihr aus der Reihe 32 – 40 – 50 – 63 – 80 – 100 mm?',o:[['50','50 mm'],['63','63 mm'],['80','80 mm']],c:'63',w:{'50':'50 mm ist kleiner als der Mindestdurchmesser 60 mm – die Kraft würde nicht reichen.','80':'80 mm reicht, ist aber unnötig groß (mehr Luftverbrauch, teurer). Wählt den nächstgrößeren Durchmesser.','63':'Richtig: der nächstgrößere Durchmesser. Kontrolle: F = 50 N/cm² · 31,17 cm² · 0,85 = 1325 N > 1200 N.'}}},
+ K3:{grp:'K',title:'Erforderlicher Druck im Rückhub',txt:'Ein doppeltwirkender Zylinder (D = 50 mm, d = 20 mm, η = 0,9) soll beim Rückhub eine wirksame Kraft von 800 N aufbringen. Welcher Betriebsdruck p<sub>e</sub> in <b>bar</b> muss am Druckregelventil eingestellt werden?',unit:'bar',val:5.39,tol:'K',
+  tips:['p<sub>e</sub> = F / (A · η) – und Rückhub heißt: Kreisringfläche.','A = π · (25 cm² − 4 cm²) / 4 = 16,49 cm²','p<sub>e</sub> = 800 N / (16,49 cm² · 0,9) = 53,9 N/cm² = 5,39 bar'],
+  err:[[53.9,'Das Ergebnis ist in N/cm². Teilt durch 10, um bar zu erhalten.'],[4.53,'Ihr habt die volle Kolbenfläche genommen. Beim Rückhub gilt die Kreisringfläche.'],[4.85,'Wirkungsgrad vergessen.']]},
+ L1:{grp:'L',title:'Einfachwirkender Zylinder',txt:'Ein einfachwirkender Zylinder zum Auswerfen von Drehteilen hat D = 32 mm und den Hub s = 50 mm. Er arbeitet mit p<sub>e</sub> = 6 bar und n = 20 Hüben pro Minute. Berechnet den Luftverbrauch Q in l/min.',unit:'l/min',val:5.63,tol:'L',
+  tips:['Rechnet in cm: D = 3,2 cm, s = 5 cm. A = π · (3,2 cm)² / 4 = 8,04 cm².','Verdichtungsverhältnis: (6 bar + 1 bar) / 1 bar = 7','Q = 8,04 cm² · 5 cm · 20 1/min · 7 = 5630 cm³/min = 5,63 l/min'],
+  err:[[4.83,'Ihr habt mit p<sub>e</sub>/p<sub>amb</sub> = 6 gerechnet. Richtig: (p<sub>e</sub> + p<sub>amb</sub>) / p<sub>amb</sub> = 7.'],[5630,'Das ist cm³/min. 1000 cm³ = 1 l.'],[0.80,'Ihr habt das Verdichtungsverhältnis vergessen.']]},
+ L2:{grp:'L',title:'Doppeltwirkender Zylinder',txt:'Ein doppeltwirkender Zylinder einer Vorschubeinheit hat D = 50 mm, Hub s = 120 mm, Hubzahl n = 15 1/min und p<sub>e</sub> = 6 bar. Berechnet den Luftverbrauch Q in l/min (Kolbenstange vernachlässigen).',unit:'l/min',val:49.5,tol:'L',
+  tips:['Doppeltwirkend: Faktor 2, weil Vor- und Rückhub Luft verbrauchen.','A = π · (5 cm)² / 4 = 19,63 cm², s = 12 cm, Verdichtungsverhältnis 7','Q = 2 · 19,63 cm² · 12 cm · 15 1/min · 7 = 49 480 cm³/min ≈ 49,5 l/min'],
+  err:[[24.7,'Faktor 2 vergessen: Der doppeltwirkende Zylinder verbraucht beim Vor- und Rückhub Luft.'],[42.4,'Verdichtungsverhältnis falsch: (6 + 1) / 1 = 7.'],[49480,'Das ist cm³/min. Teilt durch 1000.']]},
+ L3:{grp:'L',title:'Luftverbrauch pro Schicht',txt:'Der Zylinder aus der vorherigen Aufgabe (Q ≈ 49,5 l/min) läuft in einer Schicht von 8 Stunden mit einem Nutzungsgrad von 75 %. Wie viel Druckluft in <b>m³</b> verbraucht er pro Schicht?',unit:'m³',val:17.81,tol:'L',
+  tips:['8 h = 480 min. Nur 75 % der Zeit läuft der Zylinder.','V = 49,48 l/min · 480 min · 0,75','V = 17 813 l ≈ 17,8 m³ (1 m³ = 1000 l)'],
+  err:[[23.75,'Den Nutzungsgrad von 75 % habt ihr vergessen.'],[17813,'Das ist in Litern. 1 m³ = 1000 l.'],[0.297,'Ihr habt mit 8 statt 480 Minuten gerechnet.']]}
+};
+function calcHTML(k){var c=CALC[k];var h='<div class="task" id="t_'+k+'"><h3><span class="num">'+(k.replace(/[a-z]$/,'').replace(/^[KL]/,''))+(/[a-z]$/.test(k)?k.slice(-1):'')+'</span>'+c.title+'</h3><p>'+c.txt+'</p>'+
+  '<div class="ans"><label for="in_'+k+'" style="margin:0">Ergebnis:</label><input type="text" inputmode="decimal" id="in_'+k+'" data-key="in_'+k+'" autocomplete="off"><span class="unit">'+c.unit+'</span>'+
+  '<button class="btn" data-calc="'+k+'">Prüfen</button><button class="btn ghost" data-tip="'+k+'">Tipp</button><button class="btn sec" data-sol="'+k+'" disabled>Lösungsweg</button></div>'+
+  '<label for="w_'+k+'" class="small">Rechenweg (gegeben – gesucht – Formel – Rechnung – Antwort)</label><textarea id="w_'+k+'" data-key="w_'+k+'" style="min-height:70px"></textarea>'+
+  '<div class="fb" id="fb_'+k+'" aria-live="polite"></div><div class="fb hint" id="tp_'+k+'"></div>';
+  if(c.extra){var x=c.extra;h+='<div class="ans" style="margin-top:8px"><label for="'+x.key+'" style="margin:0">'+x.q+'</label><select id="'+x.key+'" data-key="'+x.key+'" class="inline"><option value="">…</option>'+x.o.map(function(o){return '<option value="'+o[0]+'">'+o[1]+'</option>';}).join('')+'</select><button class="btn" data-ext="'+k+'">Prüfen</button></div><div class="fb" id="fbx_'+k+'"></div>';}
+  return h+'</div>';}
+$('#calcK').innerHTML=['K1a','K1b','K2a','K2b','K3'].map(calcHTML).join('');
+$('#calcL').innerHTML=['L1','L2','L3'].map(calcHTML).join('');
+var tipN={};
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('button');if(!b)return;
+  var k=b.getAttribute('data-calc');if(k){var c=CALC[k],x=parseNum(S.ans['in_'+k]);var tol=c.tol==='K'?CONFIG.tolKraft:CONFIG.tolLuft;
+    if(!isFinite(x)){fb('fb_'+k,'hint','Bitte zuerst einen Zahlenwert eingeben (Komma oder Punkt erlaubt).');return;}
+    $('[data-sol="'+k+'"]').disabled=false;
+    if(near(x,c.val,tol)){S.res[k]=1;fb('fb_'+k,'ok','<b class="tag">✓ Richtig.</b> Ergebnis: '+fmt(c.val,c.val<10?2:1)+' '+c.unit+'. Prüft im Rechenweg noch die Einheiten.');}
+    else{S.res[k]=0;var m='';c.err.forEach(function(er){if(near(x,er[0],0.02))m=er[1];});fb('fb_'+k,'no','<b class="tag">✗ Noch nicht richtig.</b> '+(m||'Überprüft Formel, Einheiten (mm → cm, bar → N/cm²) und Zwischenergebnisse. Nutzt bei Bedarf die Tipps.'));}
+    save();return;}
+  k=b.getAttribute('data-tip');if(k){tipN[k]=Math.min((tipN[k]||0)+1,2);var c2=CALC[k];var h='';for(var i=0;i<tipN[k];i++)h+='<p><b>Tipp '+(i+1)+':</b> '+c2.tips[i]+'</p>';if(tipN[k]>=2)h+='<p class="small">Mehr Tipps gibt es nicht – rechnet selbst weiter oder öffnet den Lösungsweg nach einem eigenen Versuch.</p>';fb('tp_'+k,'hint',h);return;}
+  k=b.getAttribute('data-sol');if(k){var c3=CALC[k];fb('tp_'+k,'hint','<b>Lösungsweg:</b><br>'+c3.tips.join('<br>'));return;}
+  k=b.getAttribute('data-ext');if(k){var x2=CALC[k].extra,v=S.ans[x2.key];if(!v){fb('fbx_'+k,'hint','Bitte einen Durchmesser wählen.');return;}fb('fbx_'+k,v===x2.c?'ok':'no',(v===x2.c?'<b class="tag">✓</b>':'<b class="tag">✗</b>')+x2.w[v]);S.res[x2.key]=(v===x2.c)?1:0;save();}
+});
+
+/* ================= 8 Kompetenzcheck ================= */
+var KC=[
+ {t:'mc',q:'Wie heißt dieses Bauteil?',pre:'<div class="sym" style="max-width:240px" aria-hidden="true">'+PLANS.sym('v32r')+'</div>',o:['3/2-Wegeventil, Taster, Federrückstellung','3/2-Wegeventil, Rollenhebel, Federrückstellung','5/2-Wegeventil, Rollenhebel'],c:1,w:'Drei Anschlüsse, zwei Schaltstellungen, Rolle (Kreis) am Stößel.'},
+ {t:'mc',q:'Was bedeutet die Anschlussbezeichnung 14 an einem 5/2-Wegeventil?',o:['Entlüftung','Steueranschluss: Bei Signal wird 1 mit 4 verbunden.','Arbeitsanschluss zur Kolbenseite'],c:1,w:'14 = Steueranschluss, verbindet 1 mit 4.'},
+ {t:'mc',q:'Welche Drosselungsart verwendet man bei doppeltwirkenden Zylindern?',o:['Zuluftdrosselung','Abluftdrosselung','Keine Drosselung'],c:1,w:'Abluftdrosselung: Der Kolben ist zwischen zwei Luftpolstern eingespannt, der Vorschub wird gleichmäßiger.'},
+ {t:'mc',q:'Welche Kennzeichnung erhält ein Rollenhebelventil als Endlagenschalter?',o:['-SJ','-BG','-QM'],c:1,w:'Im Unterricht: -BG für Rollenhebelventile (Grenztaster), -SJ für handbetätigte Taster.'},
+ {t:'mc',q:'Zwei Taster sollen einen Zylinder nur gemeinsam starten (UND). Wie schaltet ihr die beiden 3/2-Wegeventile?',o:['Parallel mit Wechselventil','In Reihe: 2 des ersten Ventils an 1 des zweiten Ventils','Beide direkt an 12'],c:1,w:'Reihenschaltung: Nur wenn beide betätigt sind, kommt das Signal durch. Das Wechselventil wäre ODER.'},
+ {t:'num',q:'Berechnet die wirksame Kolbenkraft im Vorhub: D = 63 mm, p<sub>e</sub> = 6 bar, η = 0,85.',unit:'N',val:1590,tol:CONFIG.tolKraft,w:'A = π · (6,3 cm)² / 4 = 31,17 cm²; F = 60 N/cm² · 31,17 cm² · 0,85 = 1590 N'},
+ {t:'num',q:'Berechnet den Luftverbrauch eines doppeltwirkenden Zylinders: D = 40 mm, s = 80 mm, n = 10 1/min, p<sub>e</sub> = 5 bar (Kolbenstange vernachlässigen).',unit:'l/min',val:12.06,tol:CONFIG.tolLuft,w:'A = 12,57 cm²; Q = 2 · 12,57 cm² · 8 cm · 10 1/min · 6 = 12 064 cm³/min ≈ 12,1 l/min'},
+ {t:'mc',q:'Warum ist die Kraft im Rückhub kleiner als im Vorhub (gleicher Druck)?',o:['Weil die Kreisringfläche kleiner ist als die Kolbenfläche.','Weil der Druck im Rückhub sinkt.','Weil der Wirkungsgrad im Rückhub schlechter ist.'],c:0,w:'Die Kolbenstange verkleinert die wirksame Fläche: A = π · (D² − d²) / 4.'}];
+(function(){var h='';KC.forEach(function(x,i){h+='<fieldset class="task" style="border:1px solid var(--line)"><legend style="font-weight:700;padding:0 4px">'+(i+1)+'. '+(x.t==='num'?x.q:esc(x.q))+'</legend>'+(x.pre||'');
+  if(x.t==='mc')x.o.forEach(function(o,j){h+='<label class="opt"><input type="radio" name="kc'+i+'" value="'+j+'" data-key="kc'+i+'"> <span>'+esc(o)+'</span></label>';});
+  else h+='<div class="ans"><label for="kc'+i+'" style="margin:0">Ergebnis:</label><input type="text" inputmode="decimal" id="kc'+i+'" data-key="kc'+i+'" autocomplete="off"><span class="unit">'+x.unit+'</span></div>';
+  h+='<div class="fb" id="kcfb'+i+'"></div></fieldset>';});$('#kcQs').innerHTML=h;})();
+$('#kcCheck').onclick=function(){var ok=0,miss=0;KC.forEach(function(x,i){var v=S.ans['kc'+i],g;
+  if(x.t==='mc'){if(v===undefined){miss++;g=false;}else g=(+v===x.c);}else{var n=parseNum(v);if(!isFinite(n)){miss++;g=false;}else g=near(n,x.val,x.tol);}
+  if(g)ok++;fb('kcfb'+i,g?'ok':'no',(g?'<b class="tag">✓ Richtig.</b>':'<b class="tag">✗ '+(v===undefined||v===''?'Nicht bearbeitet.':'Nicht richtig.')+'</b>')+x.w);});
+  S.res.kc=ok+'/'+KC.length;var msg=ok>=7?'Sehr gut vorbereitet!':ok>=5?'Gute Grundlage – wiederholt gezielt die falsch gelösten Themen.':'Wiederholt die Schritte 1 bis 7 noch einmal, besonders die Themen der falsch gelösten Aufgaben.';
+  $('#kcRes').innerHTML='<div class="card" style="background:var(--soft)"><div class="score">'+ok+' / '+KC.length+'</div><p>'+msg+(miss?' ('+miss+' Aufgabe(n) nicht bearbeitet.)':'')+'</p></div>';save();};
+
+/* ================= 9 Abschluss ================= */
+var SELF=['Bauteile erkennen, benennen und kennzeichnen','Bauteile beschreiben (Aufbau, Funktion)','Schaltpläne lesen und den Ablauf beschreiben','Schaltpläne mit doppeltwirkendem Zylinder erstellen','Kolbenkräfte berechnen','Luftverbrauch berechnen'];
+var SLV=['sicher','teilweise','unsicher'];
+(function(){var h='<tr><th>Kompetenz</th>'+SLV.map(function(l){return '<th>'+l+'</th>';}).join('')+'</tr>';SELF.forEach(function(s,i){h+='<tr><td>'+esc(s)+'</td>'+SLV.map(function(l,j){return '<td><label class="sr" for="se'+i+'_'+j+'">'+esc(s)+': '+l+'</label><input type="radio" id="se'+i+'_'+j+'" name="se'+i+'" value="'+l+'" data-key="se'+i+'"></td>';}).join('')+'</tr>';});$('#selfTbl').innerHTML=h;})();
+function resultText(){var r=S.res,a=S.ans,d=new Date().toLocaleDateString('de-DE');
+  var calc=['K1a','K1b','K2a','K2b','K3','L1','L2','L3'].map(function(k){var nv=parseNum(a['in_'+k]);return k+': '+(isFinite(nv)?String(nv).replace('.',','):'–')+' '+CALC[k].unit+(r[k]===1?' (richtig)':r[k]===0?' (falsch)':'');}).join('\n');
+  var t='Pneumatik – Klausurvorbereitung ('+CONFIG.klasse+')\nName/Kürzel: '+(a.name||'–')+'\nDatum: '+d+'\n\n'+
+  'Bauteile erkennen: '+(r.sym||'nicht geprüft')+'\nAnschlüsse: '+(r.port||'–')+' · Ventilbezeichnung: '+(r.vb||'–')+' · Lückentext: '+(r.gap||'–')+'\n'+
+  'Schaltplan lesen: '+(r.read||'–')+' · Reihenfolge: '+(r.order||'–')+'\nSchaltplan erstellen (Baukasten): '+(r.kit||'–')+'\nSchaltplan selbst gezeichnet: '+(a.drawn?'ja':'nein')+' ('+DRAWK.filter(function(x,i){return a['dk'+i];}).length+' von '+DRAWK.length+' Kriterien abgehakt)\n\n'+
+  'Rechenaufgaben:\n'+calc+'\n\nKompetenzcheck: '+(r.kc||'nicht ausgewertet')+'\n\nSelbsteinschätzung:\n'+SELF.map(function(s,i){return '- '+s+': '+(a['se'+i]||'–');}).join('\n')+
+  '\n\nZylinder beschreiben:\n'+(a.ft1||'–')+'\n\nAnforderungen Wegeventil:\n'+(a.ft2||'–')+'\n\nDas wiederhole ich noch:\n'+(a.ft3||'–');return t;}
+function buildResult(){$('#resultTxt').value=resultText();}
+$('#copyBtn').onclick=function(){var t=resultText();$('#resultTxt').value=t;var done=function(){fb('abgFb','ok','Ergebnistext kopiert. Fügt ihn in LearningView ein.');};
+  try{navigator.clipboard.writeText(t).then(done,function(){fallbackCopy();});}catch(e){fallbackCopy();}};
+function fallbackCopy(){var ta=$('#resultTxt');ta.focus();ta.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}fb('abgFb',ok?'ok':'hint',ok?'Ergebnistext kopiert.':'Kopieren ist hier gesperrt. Markiert den Text im Feld unten und kopiert ihn von Hand oder fotografiert ihn ab.');}
+$('#printBtn').onclick=function(){var a=S.ans,logo=$('#logo').src;
+  $('#printArea').innerHTML='<div style="display:flex;align-items:center;gap:14px;margin-bottom:10px"><img src="'+logo+'" alt="" style="height:50px"><div><b>BBS Meppen · Berufsschule Metall</b><br>Pneumatik – Klausurvorbereitung · '+esc(CONFIG.klasse)+'</div></div><pre style="white-space:pre-wrap;font:10.5pt/1.45 system-ui,Arial,sans-serif">'+esc(resultText())+'</pre>';
+  try{window.print();fb('abgFb','hint','Falls sich kein Druckfenster geöffnet hat, ist Drucken in der Einbettung gesperrt: Nutzt „Ergebnistext kopieren“ oder fotografiert den Ergebnistext ab.');}catch(e){fb('abgFb','hint','Drucken ist hier gesperrt. Nutzt „Ergebnistext kopieren“ oder fotografiert den Ergebnistext ab.');}};
+function code(){return btoa(unescape(encodeURIComponent(JSON.stringify(S))));}
+$('#codeBtn').onclick=function(){$('#codeTxt').value=code();$('#codeTxt').select();};
+$('#expBtn').onclick=function(){try{var b=new Blob([JSON.stringify(S,null,1)],{type:'application/json'});var u=URL.createObjectURL(b);var l=document.createElement('a');l.href=u;l.download='Pneumatik_Klausurvorbereitung_'+(S.ans.name||'Stand').replace(/[^\wäöüÄÖÜß-]/g,'_')+'.json';document.body.appendChild(l);l.click();setTimeout(function(){URL.revokeObjectURL(u);l.remove();},500);fb('impFb','hint','Falls kein Download startet, nutzt den Sicherungscode.');}catch(e){fb('impFb','hint','Download gesperrt – nutzt den Sicherungscode.');}};
+function applyImport(o){if(!o||typeof o!=='object'||!o.ans)throw new Error('x');S=merge(o);bindAll();renderOrder();renderKitPrev();$('#planC').innerHTML='';showDraw();save();go(S.step);fb('impFb','ok','Stand wiederhergestellt.');}
+$('#impCode').onclick=function(){try{applyImport(JSON.parse(decodeURIComponent(escape(atob($('#codeTxt').value.trim())))));}catch(e){fb('impFb','no','Der Code ist ungültig oder unvollständig.');}};
+$('#impFile').onchange=function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{applyImport(JSON.parse(r.result));}catch(e){fb('impFb','no','Die Datei konnte nicht gelesen werden.');}};r.readAsText(f);};
+$('#resetBtn').onclick=function(){$('#resetDlg').classList.add('show');$('#resetYes').focus();};
+$('#resetNo').onclick=function(){$('#resetDlg').classList.remove('show');};
+$('#resetYes').onclick=function(){S={v:CONFIG.version,ans:{},res:{},seen:{},step:0,order:null};try{localStorage.removeItem(CONFIG.storeKey);}catch(e){}
+  $$('.fb').forEach(function(e){e.className='fb';e.innerHTML='';});$('#kcRes').innerHTML='';$('#kitSolBox').style.display='none';$('#kitSol').disabled=true;$('#planC').innerHTML='';
+  bindAll();renderOrder();renderKitPrev();showDraw();$('#resetDlg').classList.remove('show');go(0);};
+
+/* ---------- Start ---------- */
+$('#cfgKlasse').textContent=CONFIG.klasse;$('#cfgZeit').textContent=CONFIG.zeit;$('#cfgAbgabe').textContent=CONFIG.abgabe;
+load();bindAll();renderOrder();renderKitPrev();showDraw();drawSim();go(S.step||0);
+})();
+</script>
+</body>
+</html>
